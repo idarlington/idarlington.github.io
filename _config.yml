@@ -1,0 +1,56 @@
+
+# SEO settings
+title: Idarlington's SPACE
+stylished_title: Idarlington's <span>SPACE</span>
+description: "Random thougths and <span>TILs</span>."
+keywords: "TIL, web, coding, scala, nigeria, javascript, devops"
+url: http://idarlington.github.io
+baseurl: ""
+
+google_analytics: UA-50842645-1
+disqus_shortname: "idarlington"
+
+# Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : rouge
+
+paginate: 5
+paginate_path: "/page/:num/"
+comments: true
+
+#source: source
+destination: _site
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+author:
+  name     : IKenna D. Ogbajie
+  job      : Software Developer
+  thumb    : https://en.gravatar.com/userimage/42626876/ff31b74f207c61cc9d2d1d9196fd0080.jpg?size=120
+  email    : iogbajie@gmail.com
+  url      : http://idarlington.github.io
+  github   : http://github.com/idarlington
+  twitter  : http://twitter.com/idarlington
+ # facebook : http://facebook.com/fernando.dev
+  #linkedin : http://linkedin.com/in/lizhihao
+
+# social settings
+# og_locale: "pt_BR"
+# twitter_card: "summary_large_image"
+# twitter_site: "@nandomoreirame"
+
+project:
+    repo: https://github.com/idarlington.github.io
+    name: idarlington.github.io
+    author: Ikenna Ogbajie
+
+gems:
+  #- bourbon
+  - jekyll-paginate
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
