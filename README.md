@@ -1,6 +1,6 @@
 # Idarlington's Space
 
-> 
+> This is a collection of my thoughts on Software development, Things I Learn and * 
 
 
 
