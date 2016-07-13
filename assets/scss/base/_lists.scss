@@ -1,5 +1,6 @@
 ul,
 ol {
+
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -15,6 +16,7 @@ ol {
     margin-bottom: $small-spacing;
     padding-left: $base-spacing;
   }
+
 }
 
 dl {
