@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>http://idarlington.github.io/</link>
     <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jul 2016 02:20:17 +0100</pubDate>
-    <lastBuildDate>Wed, 13 Jul 2016 02:20:17 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 00:07:35 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 00:07:35 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -30,12 +30,14 @@ span {
 
 &lt;p&gt;In 2011, corporate stewardship was brought to bear – a set of people were making sure that the language was enterprise-ready at all times. Scala is used by some of the largest companies and startups LinkedIn, Twitter, Foursquare, The Guardian &amp;amp; Intel to name a few.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/images/scala-companies.png&quot; alt=&quot;Scala Companies&quot; title=&quot;companies using scala&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;I have been using Scala for over a year and I believe it won’t die out. I would like to give you reasons to &lt;del&gt;ditch that other language and&lt;/del&gt; start using Scala. I would be presenting my case using powerful features in Scala known as case classes (no pun intended) and &lt;code class=&quot;highlighter-rouge&quot;&gt;pattern matching&lt;/code&gt;. Pattern matching is described as &lt;code class=&quot;highlighter-rouge&quot;&gt;switch on steroids&lt;/code&gt; on &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala’s official website&lt;/a&gt;. I think comparing it with switch cases is quite an injustice to it. It has also been called &lt;code class=&quot;highlighter-rouge&quot;&gt;Swiss army knife of Scala&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;case-spanconcise-codesspan&quot;&gt;case &lt;span&gt;Concise Codes&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;Unlike Java that is riddled with boiler plate codes, Scala is quite concise. Though to be fair, using Java 8 lambdas could make Java code a bit concise.&lt;/p&gt;
 
-&lt;p&gt;Comparing codes creating a user class in Scala and Java makes Scala’s concise nature clear to see.&lt;/p&gt;
+&lt;p&gt;Comparing codes creating a user class in Scala and Java clearly shows Scala’s concise nature.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Java Code&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
