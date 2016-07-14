@@ -18,7 +18,7 @@ I am a full stack software developer with experience in DevOps and currently pro
 
 I enjoy learning new things and reading about quite a number of things and watching movies. I also like underdog stories (who doesn't?) and product/ business strategy stories.
 
-##On the Web
+## On the Web
 I use *idarlington* (A combination of my first and middle name) as my user name on networks when available.
 
 * [Github](https://github.com/idarlington) – I have been involved in a few open source projects
