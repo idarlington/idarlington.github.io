@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>http://idarlington.github.io/</link>
     <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2016 02:13:02 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2016 02:13:02 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 02:17:44 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 02:17:44 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -35,7 +35,7 @@ h2 strong {
 
 &lt;p&gt;I have been using Scala for over a year and I believe it won’t die out. I would like to give you reasons to &lt;del&gt;ditch that other language and&lt;/del&gt; start using Scala. I would be presenting my case using powerful features in Scala known as case classes (no pun intended) and &lt;code class=&quot;highlighter-rouge&quot;&gt;pattern matching&lt;/code&gt;. Pattern matching is described as &lt;code class=&quot;highlighter-rouge&quot;&gt;switch on steroids&lt;/code&gt; on &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala’s official website&lt;/a&gt;. I think comparing it with switch cases is quite an injustice to it. It has also been called &lt;code class=&quot;highlighter-rouge&quot;&gt;Swiss army knife of Scala&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;case-concise-codes&quot;&gt;case &lt;strong&gt;Concise Codes&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-concise-codes&quot;&gt;case &lt;strong&gt;Concise Codes&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Unlike Java that is riddled with boiler plate codes, Scala is quite concise. Though to be fair, using Java 8 lambdas could make Java code a bit concise.&lt;/p&gt;
 
 &lt;p&gt;Comparing codes creating a user class in Scala and Java clearly shows Scala’s concise nature.&lt;/p&gt;
@@ -62,7 +62,7 @@ h2 strong {
   &lt;p&gt;— &lt;em&gt;Matei Zaharia,CTO @ Databricks&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;case-functional--oop&quot;&gt;case &lt;strong&gt;Functional &amp;amp; OOP&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-functional--oop&quot;&gt;case &lt;strong&gt;Functional &amp;amp; OOP&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Scala mixes the functional paradigm with pure object orientation.  In  Scala, functional programming is the recommended way to program but the creators knew making that deep dive would be tough for anyone so you can still use your OOP patterns.&lt;/p&gt;
 
 &lt;p&gt;Functions are first class objects in Scala. Using functional programming, you will be able to write less code that is reusable and easily maintained.&lt;/p&gt;
@@ -71,7 +71,7 @@ h2 strong {
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;until&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;case-static-typing-and-type-inference&quot;&gt;case &lt;strong&gt;Static Typing and Type Inference&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-static-typing-and-type-inference&quot;&gt;case &lt;strong&gt;Static Typing and Type Inference&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Statically typed programming languages do type checking (the process of verifying and enforcing the constraints of types) at compile-time as opposed to run-time.&lt;/p&gt;
@@ -83,22 +83,22 @@ h2 strong {
 
 &lt;p&gt;Also, with Scala’s type inference you can create variables without a specified type and the type would be inferred.&lt;/p&gt;
 
-&lt;h2 id=&quot;case--java-interoperability&quot;&gt;case  &lt;strong&gt;Java Interoperability&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case--java-interoperability&quot;&gt;case  &lt;strong&gt;Java Interoperability&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Scala has awesome Java interoperability which means you can import and use your Java codes and libraries in your Scala application (isn’t that awesome?). The good thing is that integration is seamless as Scala runs on the JVM, you do it without any performance penalty.&lt;/p&gt;
 
-&lt;h2 id=&quot;case-concurrency-and-distribution&quot;&gt;case &lt;strong&gt;Concurrency and Distribution&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-concurrency-and-distribution&quot;&gt;case &lt;strong&gt;Concurrency and Distribution&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Scala is suited for multi-core programming, it has built in tools for its implementation. Using Immutable values and collections is the recommended method of programming in Scala, as it guards your data from being mangled by different processes.&lt;/p&gt;
 
 &lt;p&gt;Scala also uses &lt;strong&gt;Akka&lt;/strong&gt; which is a &lt;code class=&quot;highlighter-rouge&quot;&gt;toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications&lt;/code&gt;. Scala’s functional nature makes it easier to write safe and performant multi-threaded code. There is less reliance on mutable state and Scala’s futures and actors provide powerful tools for organizing concurrent systems.&lt;/p&gt;
 
-&lt;h2 id=&quot;case-high-paying-jobs-and-most-loved-language&quot;&gt;case &lt;strong&gt;High Paying Jobs and Most loved Language&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-high-paying-jobs-and-most-loved-language&quot;&gt;case &lt;strong&gt;High Paying Jobs and Most loved Language&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;From the results of the recent &lt;a href=&quot;http://stackoverflow.com/research/developer-survey-2016#technology-most-loved-dreaded-and-wanted&quot;&gt;stack-overflow survey&lt;/a&gt;, Scala is amongst the top five most loved  languages.  Scala has recently seen adoption as the language for introduction to computer science in some educational institutions.&lt;/p&gt;
 
 &lt;p&gt;It is no mistake that Spark (a data engine written in Scala) jobs and Scala jobs are the top paying tech jobs in the US and amongst the top ten paying tech jobs worldwide according to the &lt;a href=&quot;http://stackoverflow.com/research/developer-survey-2016#technology-top-paying-tech&quot;&gt;stack-overflow survey&lt;/a&gt;. I guess if none of the above cases impressed you, this should do right?&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/loved-scala.png&quot; alt=&quot;Loved Scala&quot; title=&quot;scala top paying tech 2016&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;case-&quot;&gt;case &lt;strong&gt;_&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;case-&quot;&gt;case &lt;strong&gt;_&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;Other features that make Scala awesome are&lt;/p&gt;
 
