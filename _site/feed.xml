@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Idarlington&#39;s SPACE</title>
+    <description>Random thougths and TILs.</description>
+    <link>http://idarlington.github.io/</link>
+    <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 14 Jul 2016 02:13:02 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 02:13:02 +0100</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Why you should learn Scala</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h2 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;p&gt;I want to believe you must have heard or read about Scala and learnt it was a JVM language. You probably thought - just another JVM language that would die out soon. Right ?  Or maybe you haven’t heard of Scala. How so?&lt;/p&gt;
+
+&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;Scala is short for scalable language, it combines both object oriented and functional programming concepts. It runs on the JVM (Java Virtual Machine). Scala was created by Martin Odersky (he worked on the Java compiler) and it’s first release was in 2003.&lt;/p&gt;
+
+&lt;p&gt;In 2011, corporate stewardship was brought to bear – a set of people were making sure that the language was enterprise-ready at all times. Scala is used by some of the largest companies and startups LinkedIn, Twitter, Foursquare, The Guardian &amp;amp; Intel to name a few.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/scala-companies.png&quot; alt=&quot;Scala Companies&quot; title=&quot;companies using scala&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have been using Scala for over a year and I believe it won’t die out. I would like to give you reasons to &lt;del&gt;ditch that other language and&lt;/del&gt; start using Scala. I would be presenting my case using powerful features in Scala known as case classes (no pun intended) and &lt;code class=&quot;highlighter-rouge&quot;&gt;pattern matching&lt;/code&gt;. Pattern matching is described as &lt;code class=&quot;highlighter-rouge&quot;&gt;switch on steroids&lt;/code&gt; on &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala’s official website&lt;/a&gt;. I think comparing it with switch cases is quite an injustice to it. It has also been called &lt;code class=&quot;highlighter-rouge&quot;&gt;Swiss army knife of Scala&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-concise-codes&quot;&gt;case &lt;strong&gt;Concise Codes&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Unlike Java that is riddled with boiler plate codes, Scala is quite concise. Though to be fair, using Java 8 lambdas could make Java code a bit concise.&lt;/p&gt;
+
+&lt;p&gt;Comparing codes creating a user class in Scala and Java clearly shows Scala’s concise nature.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Java Code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Scala Code
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;When we started Spark, we wanted it to have a concise API for users, which Scala did well.&lt;/p&gt;
+
+  &lt;p&gt;— &lt;em&gt;Matei Zaharia,CTO @ Databricks&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;case-functional--oop&quot;&gt;case &lt;strong&gt;Functional &amp;amp; OOP&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Scala mixes the functional paradigm with pure object orientation.  In  Scala, functional programming is the recommended way to program but the creators knew making that deep dive would be tough for anyone so you can still use your OOP patterns.&lt;/p&gt;
+
+&lt;p&gt;Functions are first class objects in Scala. Using functional programming, you will be able to write less code that is reusable and easily maintained.&lt;/p&gt;
+
+&lt;p&gt;Solving the first Euler problem &lt;em&gt;(Find the sum of all the multiples of 3 or 5 below 1000)&lt;/em&gt; in Scala with the functional paradigm shows clean and maintainable code.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;until&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;case-static-typing-and-type-inference&quot;&gt;case &lt;strong&gt;Static Typing and Type Inference&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Statically typed programming languages do type checking (the process of verifying and enforcing the constraints of types) at compile-time as opposed to run-time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Scala’s static typing is one of my favorite feature.It has been proven that static typing improves code quality. This is important for data scientists, if you have a large job that will run for hours, you don’t want to find out half way through the job that it was not a correct implementation.&lt;/p&gt;
+
+&lt;p&gt;Scala’s static typing helps you write less tests, you don’t need to write tests to check type consistency as the compiler does that for you (Sigh of relief).  This helps you reduce the amount of stupid bugs at an early stage.&lt;/p&gt;
+
+&lt;p&gt;Also, with Scala’s type inference you can create variables without a specified type and the type would be inferred.&lt;/p&gt;
+
+&lt;h2 id=&quot;case--java-interoperability&quot;&gt;case  &lt;strong&gt;Java Interoperability&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Scala has awesome Java interoperability which means you can import and use your Java codes and libraries in your Scala application (isn’t that awesome?). The good thing is that integration is seamless as Scala runs on the JVM, you do it without any performance penalty.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-concurrency-and-distribution&quot;&gt;case &lt;strong&gt;Concurrency and Distribution&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Scala is suited for multi-core programming, it has built in tools for its implementation. Using Immutable values and collections is the recommended method of programming in Scala, as it guards your data from being mangled by different processes.&lt;/p&gt;
+
+&lt;p&gt;Scala also uses &lt;strong&gt;Akka&lt;/strong&gt; which is a &lt;code class=&quot;highlighter-rouge&quot;&gt;toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications&lt;/code&gt;. Scala’s functional nature makes it easier to write safe and performant multi-threaded code. There is less reliance on mutable state and Scala’s futures and actors provide powerful tools for organizing concurrent systems.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-high-paying-jobs-and-most-loved-language&quot;&gt;case &lt;strong&gt;High Paying Jobs and Most loved Language&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;From the results of the recent &lt;a href=&quot;http://stackoverflow.com/research/developer-survey-2016#technology-most-loved-dreaded-and-wanted&quot;&gt;stack-overflow survey&lt;/a&gt;, Scala is amongst the top five most loved  languages.  Scala has recently seen adoption as the language for introduction to computer science in some educational institutions.&lt;/p&gt;
+
+&lt;p&gt;It is no mistake that Spark (a data engine written in Scala) jobs and Scala jobs are the top paying tech jobs in the US and amongst the top ten paying tech jobs worldwide according to the &lt;a href=&quot;http://stackoverflow.com/research/developer-survey-2016#technology-top-paying-tech&quot;&gt;stack-overflow survey&lt;/a&gt;. I guess if none of the above cases impressed you, this should do right?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loved-scala.png&quot; alt=&quot;Loved Scala&quot; title=&quot;scala top paying tech 2016&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;case-&quot;&gt;case &lt;strong&gt;_&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Other features that make Scala awesome are&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Options&lt;/strong&gt; – No more NullPointerExceptions code crashes or errors.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;One class != one file&lt;/strong&gt; as you can have more than a class in a file.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scala traits&lt;/strong&gt; - multiple inheritance without some of it’s dangers but with some limitations.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scala streams&lt;/strong&gt; - an awesome scala collection that can be used for efficient Big Data pocessing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Case classes&lt;/strong&gt; and &lt;strong&gt;pattern matching&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Semicolons&lt;/strong&gt; are not &lt;strong&gt;compulsory&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, what do you think? Drop your thoughts in the comments section.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Jul 2016 00:00:00 +0100</pubDate>
+        <link>http://idarlington.github.io/2016/why-you-should-learn-scala/</link>
+        <guid isPermaLink="true">http://idarlington.github.io/2016/why-you-should-learn-scala/</guid>
+        
+        <category>Scala</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

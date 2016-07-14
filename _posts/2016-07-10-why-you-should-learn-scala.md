@@ -21,7 +21,8 @@ h2 strong {
 </style>
 I want to believe you must have heard or read about Scala and learnt it was a JVM language. You probably thought - just another JVM language that would die out soon. Right ?  Or maybe you haven't heard of Scala. How so?
 
-##History
+## History
+
 Scala is short for scalable language, it combines both object oriented and functional programming concepts. It runs on the JVM (Java Virtual Machine). Scala was created by Martin Odersky (he worked on the Java compiler) and it's first release was in 2003.
 
 In 2011, corporate stewardship was brought to bear – a set of people were making sure that the language was enterprise-ready at all times. Scala is used by some of the largest companies and startups LinkedIn, Twitter, Foursquare, The Guardian & Intel to name a few.
@@ -30,7 +31,7 @@ In 2011, corporate stewardship was brought to bear – a set of people were maki
 
 I have been using Scala for over a year and I believe it won't die out. I would like to give you reasons to <del>ditch that other language and</del> start using Scala. I would be presenting my case using powerful features in Scala known as case classes (no pun intended) and `pattern matching`. Pattern matching is described as `switch on steroids` on [Scala's official website](http://www.scala-lang.org/). I think comparing it with switch cases is quite an injustice to it. It has also been called `Swiss army knife of Scala`.
 
-##case **Concise Codes**
+## case **Concise Codes**
 Unlike Java that is riddled with boiler plate codes, Scala is quite concise. Though to be fair, using Java 8 lambdas could make Java code a bit concise.
 
 Comparing codes creating a user class in Scala and Java clearly shows Scala's concise nature.
@@ -59,7 +60,7 @@ class User(
 >
 > — *Matei Zaharia,CTO @ Databricks*
 
-##case **Functional & OOP**
+## case **Functional & OOP**
 Scala mixes the functional paradigm with pure object orientation.  In  Scala, functional programming is the recommended way to program but the creators knew making that deep dive would be tough for anyone so you can still use your OOP patterns.
 
 Functions are first class objects in Scala. Using functional programming, you will be able to write less code that is reusable and easily maintained.
@@ -69,7 +70,7 @@ Solving the first Euler problem *(Find the sum of all the multiples of 3 or 5 be
 val result = (1 until 1000).view.filter(n => n % 3 == 0 || n % 5 == 0).sum
 {% endhighlight %}
 
-##case **Static Typing and Type Inference**
+## case **Static Typing and Type Inference**
 
 
 
@@ -82,15 +83,15 @@ Scala's static typing helps you write less tests, you don't need to write tests 
  Also, with Scala's type inference you can create variables without a specified type and the type would be inferred.
 
 
-##case  **Java Interoperability**
+## case  **Java Interoperability**
 Scala has awesome Java interoperability which means you can import and use your Java codes and libraries in your Scala application (isn't that awesome?). The good thing is that integration is seamless as Scala runs on the JVM, you do it without any performance penalty.
 
-##case **Concurrency and Distribution**
+## case **Concurrency and Distribution**
 Scala is suited for multi-core programming, it has built in tools for its implementation. Using Immutable values and collections is the recommended method of programming in Scala, as it guards your data from being mangled by different processes.
 
 Scala also uses **Akka** which is a ``toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications``. Scala's functional nature makes it easier to write safe and performant multi-threaded code. There is less reliance on mutable state and Scala’s futures and actors provide powerful tools for organizing concurrent systems.
 
-##case **High Paying Jobs and Most loved Language**
+## case **High Paying Jobs and Most loved Language**
 From the results of the recent [stack-overflow survey](http://stackoverflow.com/research/developer-survey-2016#technology-most-loved-dreaded-and-wanted), Scala is amongst the top five most loved  languages.  Scala has recently seen adoption as the language for introduction to computer science in some educational institutions.
 
 It is no mistake that Spark (a data engine written in Scala) jobs and Scala jobs are the top paying tech jobs in the US and amongst the top ten paying tech jobs worldwide according to the [stack-overflow survey](http://stackoverflow.com/research/developer-survey-2016#technology-top-paying-tech). I guess if none of the above cases impressed you, this should do right?
@@ -99,7 +100,7 @@ It is no mistake that Spark (a data engine written in Scala) jobs and Scala jobs
 
 
 
-##Case **_**
+## case **_**
 
  Other features that make Scala awesome are
 
