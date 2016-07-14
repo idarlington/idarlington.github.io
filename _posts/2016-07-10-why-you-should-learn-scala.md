@@ -15,7 +15,7 @@ ul {
   padding-left: 30px;
 }
 
-h2 strong {
+h3 strong {
   font-weight:normal;
 }
 </style>
