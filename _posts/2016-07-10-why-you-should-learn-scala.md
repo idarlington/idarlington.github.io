@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Why you should learn Scala"
+description: "Reasons why you should start using scala"
 comments: true
 keywords: "why scala, learn scala"
 tags:
@@ -10,8 +11,8 @@ tags:
 <style>
 ul {
   list-style-type: square;
- margin-bottom: 10px;
- padding-left: 30px;
+  margin-bottom: 10px;
+  padding-left: 30px;
 }
 
 span {

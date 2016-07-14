@@ -3,9 +3,24 @@ layout: page
 title: About
 permalink: /about/
 ---
+<style>
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+</style>
+My name is **Ikenna Darlington Ogbajie**, Ikenna means the *father's strength* in [Igbo language](https://en.wikipedia.org/wiki/Igbo_language). I am currently based in Lagos, Nigeria.
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+![Ikenna Darlington Ogbajie](/assets/images/author.png "Ikenna Darlington")
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+I am a full stack software developer with experience in DevOps and currently program with different languages (`Scala`, `PHP`, `JavaScript`). Other technologies I have worked with are `Spark`, `D3.js`, `MySQL`, `Elasticsearch`, `MongoDB`, `CakePHP`, `HTML` and `CSS`. I am interested in `Machine learning` and `Data Visualization`.
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+I enjoy learning new things and reading about quite a number of things and watching movies. I also like underdog stories (who doesn't?) and product/ business strategy stories.
+
+##On the Web
+I use *idarlington* (A combination of my first and middle name) as my user name on networks when available.
+
+* [Github](https://github.com/idarlington) – I have been involved in a few open source projects
+* [LinkedIn](https://www.linkedin.com/in/idarlington)
+* [Twitter](https://twitter.com/Idarlington)
