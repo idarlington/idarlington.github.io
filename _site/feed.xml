@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>http://idarlington.github.io/</link>
     <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Jul 2016 01:43:49 +0100</pubDate>
-    <lastBuildDate>Sun, 17 Jul 2016 01:43:49 +0100</lastBuildDate>
+    <pubDate>Sun, 17 Jul 2016 01:50:08 +0100</pubDate>
+    <lastBuildDate>Sun, 17 Jul 2016 01:50:08 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -79,22 +79,35 @@ h3 strong {
 
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;http://www.artima.com/shop/programming_in_scala_3ed&quot;&gt;Programming in Scala&lt;/a&gt; :
-  This book is written by some of the core maintainer  &amp;lt;p&amp;gt;This book gives the reader an overview of the language, it can also be used as a quick reference which is what I use it for most times. It is well written and approachable.
-  &amp;lt;/p&amp;gt;&lt;/p&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.scala-exercises.org/&quot;&gt;Scala Exercises&lt;/a&gt; :
+  This book is written by some of the core maintainers and developers of Scala - Martin Odersky, Lex Spoon, and Bill Venners . It is a detailed and definitive guide to Scala. It provides great insights on the language’s features with detailed examples. There is a &lt;a href=&quot;http://www.artima.com/pins1ed/&quot;&gt;free online version&lt;/a&gt; of the book.&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;/assets/images/progScala.gif&quot; alt=&quot;Programming in Scala&quot; title=&quot;Programming in Scala&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://twitter.github.io/scala_school/&quot;&gt;Twitter Scala School&lt;/a&gt; :
+  This resource started as a series the of lectures at twitter to &lt;em&gt;prepare experienced engineers to be productive Scala programmers&lt;/em&gt;. The lessons are quite concise and properly organized. It is suited for intermediate programmers who have programming experience and quickly want to grasp Scala concepts.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.scala-tour.com/&quot;&gt;Scala Tour&lt;/a&gt; :
+  This is similar to &lt;a href=&quot;https://twitter.github.io/scala_school/&quot;&gt;twitter Scala School&lt;/a&gt; in its concise nature. It provides an overview to the main features of Scala. It also allows you to run and test your code as you learn.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.scala-exercises.org/&quot;&gt;Scala Exercises&lt;/a&gt; :
   I believe this resource should be used by anyone learning Scala. It is a set of Scala exercises that have sections on Scala features. It is an open source project actively maintained by &lt;a href=&quot;http://www.47deg.com/&quot;&gt;47 Degrees&lt;/a&gt;. It is one of my best Scala resources and one that I have contributed to.&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;p&gt;&amp;lt;/ol&amp;gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-    &lt;p&gt;As you progress with learning scala, you can try solving the &lt;a href=&quot;http://aperiodic.net/phil/scala/s-99/&quot;&gt;99 problems&lt;/a&gt; and &lt;a href=&quot;https://projecteuler.net/archives&quot;&gt;project euler problems&lt;/a&gt; using &lt;a href=&quot;https://pavelfatin.com/scala-for-project-euler/&quot;&gt;scala&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As you progress with learning scala, you can try solving the &lt;a href=&quot;http://aperiodic.net/phil/scala/s-99/&quot;&gt;99 problems&lt;/a&gt; and &lt;a href=&quot;https://projecteuler.net/archives&quot;&gt;project euler problems&lt;/a&gt; using &lt;a href=&quot;https://pavelfatin.com/scala-for-project-euler/&quot;&gt;scala&lt;/a&gt;.&lt;/p&gt;
 
-    &lt;p&gt;Another good resource is &lt;a href=&quot;https://pavelfatin.com/scala-collections-tips-and-tricks/&quot;&gt;pavel fatin’s Scala Collections Tips and Tricks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Another good resource is &lt;a href=&quot;https://pavelfatin.com/scala-collections-tips-and-tricks/&quot;&gt;pavel fatin’s Scala Collections Tips and Tricks&lt;/a&gt;.&lt;/p&gt;
 
-    &lt;p&gt;Know of other awesome resources ? have questions ? please do comment and share.&lt;/p&gt;
+&lt;p&gt;Know of other awesome resources ? have questions ? please do comment and share.&lt;/p&gt;
 
-    &lt;p&gt;Wishing you a smooth Journey in Scala ; )&lt;/p&gt;
-  &lt;/li&gt;&lt;/ol&gt;
+&lt;p&gt;Wishing you a smooth Journey in Scala ; )&lt;/p&gt;
 </description>
         <pubDate>Thu, 14 Jul 2016 00:00:00 +0100</pubDate>
         <link>http://idarlington.github.io/2016/best-resources-for-learning-scala/</link>
