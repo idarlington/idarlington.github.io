@@ -5,9 +5,118 @@
     <description>Random thougths and TILs.</description>
     <link>http://idarlington.github.io/</link>
     <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2016 02:25:50 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2016 02:25:50 +0100</lastBuildDate>
+    <pubDate>Sun, 17 Jul 2016 01:37:20 +0100</pubDate>
+    <lastBuildDate>Sun, 17 Jul 2016 01:37:20 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Best resources for learning Scala</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+ol {
+  list-style-type: decimal;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h3 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Assuming I have been able to convince you to &lt;a href=&quot;/2016/why-you-should-learn-scala/&quot;&gt;learn Scala&lt;/a&gt;, as a &lt;em&gt;good friend&lt;/em&gt;, I won’t throw you into the deep end with no guide.&lt;/p&gt;
+
+&lt;p&gt;Here are few resources I believe will help you fully learn Scala and accelerate the process :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://gumroad.com/l/AtomicScala&quot;&gt;Atomic Scala&lt;/a&gt; : &lt;a href=&quot;http://www.atomicscala.com/&quot;&gt;This book&lt;/a&gt; assumes the reader has no prior programming experience. It introduces solution patterns and syntax. It provides the reader with the foundations of programming and Scala. It could be the first book you use in learning Scala but not the last.&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;/assets/images/atomicScala.png&quot; alt=&quot;Atomic Scala&quot; title=&quot;Atomic Scala&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://bigdatauniversity.com/courses/scala-course/&quot;&gt;Big Data University’s Introduction to Scala&lt;/a&gt; : This is a series of videos on Scala that can be completed within 6-8 hours. It is assumed you have no prior knowledge of Scala but have some programming experience. The videos were created by &lt;a href=&quot;https://www.lightbend.com/&quot;&gt;Typesafe&lt;/a&gt; (now known as Lightbend)&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;/assets/images/bdu-logo-centre.png&quot; alt=&quot;Big Data University&quot; title=&quot;Big Data University&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://shop.oreilly.com/product/0636920030287.do&quot;&gt;Learning Scala&lt;/a&gt; : This book is a comprehensive introduction for beginner and intermediate programmers to Scala. It contains syntax diagrams, examples, and exercises. You’ll start with Scala’s core types and syntax before diving into higher-order functions and immutable data structures. This book is a great place to start for student, intermediate or experts that aren’t familiar with the Java stack and is about 220 pages long.&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;http://akamaicovers.oreilly.com/images/0636920030287/cat.gif&quot; alt=&quot;Learning Scala&quot; title=&quot;Learning Scala&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://shop.oreilly.com/product/0636920026914.do&quot;&gt;Scala Cookbok&lt;/a&gt; : Although I wouldn’t advise anyone to use a cookbook in learning a language or framework as they give the learner a shallow understanding of the available features and design decisions.&lt;/p&gt;
+    &lt;p&gt;This book gives the reader an overview of the language, it can also be used as a quick reference which is what I use it for most times. It is well written and approachable.
+  &lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://joelabrahamsson.com/learning-scala/&quot;&gt;Joel Abrahamsson’s Learning Scala&lt;/a&gt; :  This is a series of blog posts on Joel Abrahamsson’s adventures in learning scala. It is a short series but gives the reader a easy way to approach learning Scala. It is mostly suited for novices and beginners.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/progfun1&quot;&gt;Functional Programming Principles in Scala on Coursera&lt;/a&gt; :
+  This coursera course is taught by Martin Odersky - the creator of scala. It focuses on programming in Scala using the functional paradigm and gives a great overview of the language. The course could span about seven weeks and is suited for intermediate programmers.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://shop.oreilly.com/product/0636920033073.do&quot;&gt;Programming Scala&lt;/a&gt;
+  Programming Scala gets you up to speed on Scala, it is also packed with code examples. This book shows you how to be productive with the language and ecosystem and is quite comprehensive and easy to read.&lt;br /&gt;&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;http://akamaicovers.oreilly.com/images/0636920033073/cat.gif&quot; alt=&quot;Programming Scala&quot; title=&quot;Programming Scala&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.artima.com/shop/programming_in_scala_3ed&quot;&gt;Programming in Scala&lt;/a&gt; :
+  This book is written by some of the core maintainers and developers of Scala - Martin Odersky, Lex Spoon, and Bill Venners . It is a detailed and definitive guide to Scala. It provides great insights on the language’s features with detailed examples. There is a &lt;a href=&quot;http://www.artima.com/pins1ed/&quot;&gt;free online version&lt;/a&gt; of the book.&lt;/p&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;/assets/images/progScala.gif&quot; alt=&quot;Programming in Scala&quot; title=&quot;Programming in Scala&quot; /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://twitter.github.io/scala_school/&quot;&gt;Twitter Scala School&lt;/a&gt; :
+  This resource started as a series the of lectures at twitter to &lt;em&gt;prepare experienced engineers to be productive Scala programmers&lt;/em&gt;. The lessons are quite concise and properly organized. It is suited for intermediate programmers who have programming experience and quickly want to grasp Scala concepts.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.scala-tour.com/&quot;&gt;Scala Tour&lt;/a&gt; :
+  This is similar to &lt;a href=&quot;https://twitter.github.io/scala_school/&quot;&gt;twitter Scala School&lt;/a&gt; in its concise nature. It provides an overview to the main features of Scala. It also allows you to run and test your code as you learn.&lt;/p&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.scala-exercises.org/&quot;&gt;Scala Exercises&lt;/a&gt; :
+  I believe this resource should be used by anyone learning Scala. It is a set of Scala exercises that have sections on Scala features. It is an open source project actively maintained by &lt;a href=&quot;http://www.47deg.com/&quot;&gt;47 Degrees&lt;/a&gt;. It is one of my best Scala resources and one that I have contributed to.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As you progress with learning scala, you can try solving the &lt;a href=&quot;http://aperiodic.net/phil/scala/s-99/&quot;&gt;99 problems&lt;/a&gt; and &lt;a href=&quot;https://projecteuler.net/archives&quot;&gt;project euler problems&lt;/a&gt; using &lt;a href=&quot;https://pavelfatin.com/scala-for-project-euler/&quot;&gt;scala&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another good resource is &lt;a href=&quot;https://pavelfatin.com/scala-collections-tips-and-tricks/&quot;&gt;pavel fatin’s Scala Collections Tips and Tricks&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Wishing you a smooth Journey in Scala ; )&lt;/p&gt;
+
+&lt;p&gt;Know of other awesome resources ? have questions ? please do comment and share.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 Jul 2016 00:00:00 +0100</pubDate>
+        <link>http://idarlington.github.io/2016/best-resources-for-learning-scala/</link>
+        <guid isPermaLink="true">http://idarlington.github.io/2016/best-resources-for-learning-scala/</guid>
+        
+        <category>Scala</category>
+        
+        
+      </item>
     
       <item>
         <title>Why you should learn Scala</title>

@@ -3,7 +3,7 @@ layout: post
 title:  "Why you should learn Scala"
 description: "Reasons why you should start using scala"
 comments: true
-keywords: "why scala, learn scala"
+keywords: "why scala, learn scala, scala"
 tags:
 - Scala
 ---
