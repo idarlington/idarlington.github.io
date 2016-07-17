@@ -68,20 +68,8 @@ Here are few resources I believe will help you fully learn Scala and accelerate 
   </li>
 
   <li markdown="1"> [Programming in Scala](http://www.artima.com/shop/programming_in_scala_3ed) :
-  This book is written by some of the core maintainers and developers of Scala - Martin Odersky, Lex Spoon, and Bill Venners . It is a detailed and definitive guide to Scala. It provides great insights on the language's features with detailed examples. There is a [free online version](http://www.artima.com/pins1ed/) of the book.
-  <div style="text-align:center" markdown="1">
-  ![Programming in Scala](/assets/images/progScala.gif "Programming in Scala")
-  </div>
-  </li>
-
-  <li markdown="1"> [Twitter Scala School](https://twitter.github.io/scala_school/) :
-  This resource started as a series the of lectures at twitter to *prepare experienced engineers to be productive Scala programmers*. The lessons are quite concise and properly organized. It is suited for intermediate programmers who have programming experience and quickly want to grasp Scala concepts.
-  </li>
-
-  <li markdown="1"> [Scala Tour](http://www.scala-tour.com/) :
-  This is similar to [twitter Scala School](https://twitter.github.io/scala_school/) in its concise nature. It provides an overview to the main features of Scala. It also allows you to run and test your code as you learn.
-  </li>
-
+  This book is written by some of the core maintainer  <p>This book gives the reader an overview of the language, it can also be used as a quick reference which is what I use it for most times. It is well written and approachable.
+  </p>
   <li markdown="1"> [Scala Exercises](https://www.scala-exercises.org/) :
   I believe this resource should be used by anyone learning Scala. It is a set of Scala exercises that have sections on Scala features. It is an open source project actively maintained by [47 Degrees](http://www.47deg.com/). It is one of my best Scala resources and one that I have contributed to.
   </li>
@@ -91,6 +79,6 @@ As you progress with learning scala, you can try solving the [99 problems](http:
 
 Another good resource is [pavel fatin's Scala Collections Tips and Tricks](https://pavelfatin.com/scala-collections-tips-and-tricks/).
 
-Wishing you a smooth Journey in Scala ; )
-
 Know of other awesome resources ? have questions ? please do comment and share.
+
+Wishing you a smooth Journey in Scala ; )
