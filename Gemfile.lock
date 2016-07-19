@@ -38,6 +38,8 @@ GEM
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
+    jekyll-sitemap (0.11.0)
+      addressable (~> 2.4.0)
     jekyll-watch (1.3.0)
       listen (~> 3.0)
     json (1.8.3)
@@ -79,5 +81,6 @@ DEPENDENCIES
   html-proofer
   jekyll (~> 3.0, >= 3.0.1)
   jekyll-paginate (~> 1.1)
+  jekyll-sitemap
   pygments.rb (~> 0.6.3)
   sass (~> 3.4, >= 3.4.20)
