@@ -31,6 +31,7 @@ In 2011, corporate stewardship was brought to bear – a set of people were maki
 
 I have been using Scala for over a year and I believe it won't die out. I would like to give you reasons to <del>ditch that other language and</del> start using Scala. I would be presenting my case using powerful features in Scala known as case classes (no pun intended) and `pattern matching`. Pattern matching is described as `switch on steroids` on [Scala's official website](http://www.scala-lang.org/). I think comparing it with switch cases is quite an injustice to it. It has also been called `Swiss army knife of Scala`.
 
+private String name;
 ### case **Concise Codes**
 Unlike Java that is riddled with boiler plate codes, Scala is quite concise. Though to be fair, using Java 8 lambdas could make Java code a bit concise.
 
@@ -39,11 +40,31 @@ Comparing codes creating a user class in Scala and Java clearly shows Scala's co
 {% highlight java %}
 //Java Code
 public class User {
-private String name;
-private String surname;
-private String email;
+  private String surname;
+  private String email;
   public User(String name, String surname, String email) {
-   this.name = name;/
+    this.name = name;
+    this.surname = surname;
+    this.email = email;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public void setSurname(String surname) {
+    this.surname = surname;
+  }
+  public void setEmail(String email) {
+    this.email = email
+  }
+  public String getName() {
+    return this.name;
+  }
+  public String getSurname() {
+    return this.surname;
+  }
+  public String getEmail() {
+    return this.surname;
+  }
 }
 {% endhighlight %}
 
