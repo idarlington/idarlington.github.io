@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Getting started with Apache Avro"
-description: "Guide to understanding apache avro and setting up avro schemas."
+description: "Guide to understanding apache avro and setting up avro schemas"
 comments: true
 keywords: "Avro, Apache Avro, Avro Schema"
 tags:
@@ -26,7 +26,8 @@ h3 strong {
 </style>
 
 ## What is Avro ?
-Avro is a data serialisation and RPC system like protobuff and thrift. It relies on a schema-based system. This schema is in JSON which is an advantage as most languages already have JSON libraries.
+Avro is a data serialisation and [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) system like protobuff and thrift. It relies on a schema-based system. This schema is in JSON which is an advantage as most languages already have JSON libraries. Avro was originally developed by [Doug Cutting](https://twitter.com/cutting) to provide data serialisation and data exchange services for hadoop. It has since evolved to serve other technologies apart from hadoop.
+
 Theoretically, Avro can be used in any language but it has APIs for PHP, Java, Perl, Python, C, C++, C#, Go, Haskell and Ruby.
 
 ## Where Avro shines
@@ -231,4 +232,4 @@ would result in :
 
 To validate and test your avro schema, you can check [this](http://sh6.tarantool.org/) out.
 
-My next post would be on serialzing and deserializing with Avro. If you liked this post, please share ♥.
+My next post would be on serialzing and deserializing with Avro. If you like this post, please share ♥.

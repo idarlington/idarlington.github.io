@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>https://idarlington.github.io/</link>
     <atom:link href="https://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Mar 2017 12:38:03 +0100</pubDate>
-    <lastBuildDate>Fri, 31 Mar 2017 12:38:03 +0100</lastBuildDate>
+    <pubDate>Fri, 31 Mar 2017 12:49:59 +0100</pubDate>
+    <lastBuildDate>Fri, 31 Mar 2017 12:49:59 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -29,8 +29,9 @@ h3 strong {
 &lt;/style&gt;
 
 &lt;h2 id=&quot;what-is-avro-&quot;&gt;What is Avro ?&lt;/h2&gt;
-&lt;p&gt;Avro is a data serialisation and RPC system like protobuff and thrift. It relies on a schema-based system. This schema is in JSON which is an advantage as most languages already have JSON libraries.
-Theoretically, Avro can be used in any language but it has APIs for PHP, Java, Perl, Python, C, C++, C#, Go, Haskell and Ruby.&lt;/p&gt;
+&lt;p&gt;Avro is a data serialisation and &lt;a href=&quot;https://en.wikipedia.org/wiki/Remote_procedure_call&quot;&gt;RPC&lt;/a&gt; system like protobuff and thrift. It relies on a schema-based system. This schema is in JSON which is an advantage as most languages already have JSON libraries. Avro was originally developed by &lt;a href=&quot;https://twitter.com/cutting&quot;&gt;Doug Cutting&lt;/a&gt; to provide data serialisation and data exchange services for hadoop. It has since evolved to serve other technologies apart from hadoop.&lt;/p&gt;
+
+&lt;p&gt;Theoretically, Avro can be used in any language but it has APIs for PHP, Java, Perl, Python, C, C++, C#, Go, Haskell and Ruby.&lt;/p&gt;
 
 &lt;h2 id=&quot;where-avro-shines&quot;&gt;Where Avro shines&lt;/h2&gt;
 &lt;p&gt;Comparing Avro with similar systems (protobuff, thrift, message pack), these are the areas where it differs :&lt;/p&gt;
@@ -234,7 +235,7 @@ Theoretically, Avro can be used in any language but it has APIs for PHP, Java, P
 
 &lt;p&gt;To validate and test your avro schema, you can check &lt;a href=&quot;http://sh6.tarantool.org/&quot;&gt;this&lt;/a&gt; out.&lt;/p&gt;
 
-&lt;p&gt;My next post would be on serialzing and deserializing with Avro. If you liked this post, please share ♥.&lt;/p&gt;
+&lt;p&gt;My next post would be on serialzing and deserializing with Avro. If you like this post, please share ♥.&lt;/p&gt;
 </description>
         <pubDate>Thu, 30 Mar 2017 00:00:00 +0100</pubDate>
         <link>https://idarlington.github.io/2017/Getting-started-avro/</link>
