@@ -3,11 +3,245 @@
   <channel>
     <title>Idarlington&#39;s SPACE</title>
     <description>Random thougths and TILs.</description>
-    <link>http://idarlington.github.io/</link>
-    <atom:link href="http://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Nov 2016 02:10:38 +0100</pubDate>
-    <lastBuildDate>Tue, 15 Nov 2016 02:10:38 +0100</lastBuildDate>
+    <link>https://idarlington.github.io/</link>
+    <atom:link href="https://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 31 Mar 2017 12:31:38 +0100</pubDate>
+    <lastBuildDate>Fri, 31 Mar 2017 12:31:38 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Getting started with Apache Avro</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+ol {
+  list-style-type: decimal;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h3 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;h2 id=&quot;what-is-avro-&quot;&gt;What is Avro ?&lt;/h2&gt;
+&lt;p&gt;Avro is a data serialisation and RPC system like protobuff and thrift. It relies on a schema-based system. This schema is in JSON which is an advantage as most languages already have JSON libraries.
+Theoretically, Avro can be used in any language but it has APIs for PHP, Java, Perl, Python, C, C++, C#, Go, Haskell and Ruby.&lt;/p&gt;
+
+&lt;h2 id=&quot;where-avro-shines&quot;&gt;Where Avro shines&lt;/h2&gt;
+&lt;p&gt;Comparing Avro with similar systems (protobuff, thrift, message pack), these are the areas where it differs :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Dynamic typing:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Serialisation and deserialization can be done without code generation. Code generation is also available for statically typed languages as an optional optimisation.&lt;/p&gt;
+  &lt;/li&gt;
+
+&lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Schema evolution:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Avro requires schemas when data is written or read. Most interesting is that you can use different schemas for serialisation and deserialization, and Avro will handle the missing/extra/modified fields.&lt;/p&gt;
+  &lt;/li&gt;
+
+&lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Untagged data:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Other serialisation systems like protobuff tag data but providing a schema with binary data allows each datum be written without the overhead. The result is more compact data encoding and faster data processing.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-you-need-avro-or-serialisation-libraries-generally&quot;&gt;Why you need Avro (or serialisation libraries generally):&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;You save storage space. &lt;a href=&quot;https://eng.uber.com/trip-data-squeeze/&quot;&gt;Uber&lt;/a&gt; drastically reduced their storage needs by implementing data serialization and compression.&lt;/li&gt;
+  &lt;li&gt;It significantly reduces the amount of time spent processing data.&lt;/li&gt;
+  &lt;li&gt;Translates to less money saved on provisioning hardware.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;data-types-in-avro&quot;&gt;Data types in Avro&lt;/h2&gt;
+&lt;p&gt;Avro supports a range of data types. These types could be either primitive, complex or logical types.&lt;/p&gt;
+
+&lt;h3 id=&quot;primitive-types&quot;&gt;Primitive types:&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;em&gt;null :&lt;/em&gt; no value&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;boolean :&lt;/em&gt; a binary value&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;int :&lt;/em&gt; 32-bit signed integer&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;long :&lt;/em&gt; 64-bit signed integer&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;float :&lt;/em&gt; single precision (32-bit) IEEE 754 floating-point number&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;double :&lt;/em&gt; double precision (64-bit) IEEE 754 floating-point number&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;bytes :&lt;/em&gt; sequence of 8-bit unsigned bytes&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;string :&lt;/em&gt; Unicode character sequence&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;complex-types&quot;&gt;Complex Types:&lt;/h3&gt;
+&lt;p&gt;Avro also provides complex data types which are majorly a combination of primitive types. The complex types are:&lt;/p&gt;
+
+&lt;ol&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;records&quot;&gt;&lt;em&gt;Records:&lt;/em&gt;&lt;/h4&gt;
+    &lt;p&gt;A record is a collection of multiple types. A record is equivalent to a JSON object or a dictionary in python.&lt;/p&gt;
+
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Point&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;int&quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;int&quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+  &lt;/li&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;enum&quot;&gt;&lt;em&gt;Enum:&lt;/em&gt;&lt;/h4&gt;
+    &lt;p&gt;An enumeration is a list of items in a collection.&lt;/p&gt;
+
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;enum&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Suit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;symbols&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;SPADES&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;HEARTS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;DIAMONDS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;CLUBS&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+  &lt;/li&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;arrays&quot;&gt;&lt;em&gt;Arrays:&lt;/em&gt;&lt;/h4&gt;
+
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; type &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; array &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; items &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; int &quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+  &lt;/li&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;maps&quot;&gt;&lt;em&gt;Maps:&lt;/em&gt;&lt;/h4&gt;
+    &lt;p&gt;Map keys are assumed to be strings. Eg :&lt;/p&gt;
+
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;map&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;values&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+  &lt;/li&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;unions&quot;&gt;&lt;em&gt;Unions:&lt;/em&gt;&lt;/h4&gt;
+    &lt;p&gt;Unions are represented using JSON arrays.&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[&quot;null&quot;, &quot;string&quot;]&lt;/code&gt; declares a schema which may be either a null or string.&lt;/p&gt;
+  &lt;/li&gt;
+
+&lt;li&gt;
+
+    &lt;h4 id=&quot;fixed&quot;&gt;&lt;em&gt;Fixed:&lt;/em&gt;&lt;/h4&gt;
+    &lt;p&gt;This data type is used to declare a fixed-sized field that can be used for storing binary data. It has field name and data as attributes. Name holds the name of the field, and size holds the size of the field.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;defining-a-schema&quot;&gt;Defining a schema&lt;/h2&gt;
+&lt;p&gt;As indicated, Avro schemas are defined with JSON. The Schema is a representation of the data to be serialized in avro data types.&lt;/p&gt;
+
+&lt;p&gt;Creating a schema for this Object&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A green door&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;12.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;home&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;green&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A green door&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;12.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;home&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;green&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A green door&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;12.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;home&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;green&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;would result in :&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;namespace&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;com.idarlington.avro&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stream&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;array&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&quot;items&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+                    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;float&quot;&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+                                &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;array&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                &lt;span class=&quot;s2&quot;&gt;&quot;items&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;
+                            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To validate and test your avro schema, you can check &lt;a href=&quot;http://sh6.tarantool.org/&quot;&gt;this&lt;/a&gt; out.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 30 Mar 2017 00:00:00 +0100</pubDate>
+        <link>https://idarlington.github.io/2017/Getting-started-avro/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2017/Getting-started-avro/</guid>
+        
+        <category>Avro</category>
+        
+        
+      </item>
     
       <item>
         <title>MongoDB Replication</title>
@@ -147,8 +381,8 @@ h3 strong {
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 14 Nov 2016 00:00:00 +0100</pubDate>
-        <link>http://idarlington.github.io/2016/mongodb-replication/</link>
-        <guid isPermaLink="true">http://idarlington.github.io/2016/mongodb-replication/</guid>
+        <link>https://idarlington.github.io/2016/mongodb-replication/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2016/mongodb-replication/</guid>
         
         <category>MongoDB</category>
         
@@ -179,8 +413,8 @@ h3 strong {
 &lt;iframe src=&quot;https://docs.google.com/presentation/d/15SDgIM70gJxCIF3UD5tiA5LmrfyDKwKizLNU6KV2hBg/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Mon, 24 Oct 2016 00:00:00 +0100</pubDate>
-        <link>http://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</link>
-        <guid isPermaLink="true">http://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</guid>
+        <link>https://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</guid>
         
         <category>Scala</category>
         
@@ -288,8 +522,8 @@ h3 strong {
 &lt;p&gt;Wishing you a smooth Journey in Scala ; )&lt;/p&gt;
 </description>
         <pubDate>Thu, 14 Jul 2016 00:00:00 +0100</pubDate>
-        <link>http://idarlington.github.io/2016/best-resources-for-learning-scala/</link>
-        <guid isPermaLink="true">http://idarlington.github.io/2016/best-resources-for-learning-scala/</guid>
+        <link>https://idarlington.github.io/2016/best-resources-for-learning-scala/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2016/best-resources-for-learning-scala/</guid>
         
         <category>Scala</category>
         
@@ -421,8 +655,8 @@ h3 strong {
 &lt;p&gt;So, what do you think? Drop your thoughts in the comments section.&lt;/p&gt;
 </description>
         <pubDate>Sun, 10 Jul 2016 00:00:00 +0100</pubDate>
-        <link>http://idarlington.github.io/2016/why-you-should-learn-scala/</link>
-        <guid isPermaLink="true">http://idarlington.github.io/2016/why-you-should-learn-scala/</guid>
+        <link>https://idarlington.github.io/2016/why-you-should-learn-scala/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2016/why-you-should-learn-scala/</guid>
         
         <category>Scala</category>
         
