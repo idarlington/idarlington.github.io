@@ -229,4 +229,6 @@ would result in :
 }
 {% endhighlight %}
 
-To validate and test your avro schema, you can check [this](http://sh6.tarantool.org/) out. 
+To validate and test your avro schema, you can check [this](http://sh6.tarantool.org/) out.
+
+My next post would be on serialzing and deserializing with Avro. If you liked this post, please share ♥.

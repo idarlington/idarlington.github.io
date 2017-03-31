@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>https://idarlington.github.io/</link>
     <atom:link href="https://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Mar 2017 12:31:38 +0100</pubDate>
-    <lastBuildDate>Fri, 31 Mar 2017 12:31:38 +0100</lastBuildDate>
+    <pubDate>Fri, 31 Mar 2017 12:38:03 +0100</pubDate>
+    <lastBuildDate>Fri, 31 Mar 2017 12:38:03 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -233,6 +233,8 @@ Theoretically, Avro can be used in any language but it has APIs for PHP, Java, P
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;To validate and test your avro schema, you can check &lt;a href=&quot;http://sh6.tarantool.org/&quot;&gt;this&lt;/a&gt; out.&lt;/p&gt;
+
+&lt;p&gt;My next post would be on serialzing and deserializing with Avro. If you liked this post, please share ♥.&lt;/p&gt;
 </description>
         <pubDate>Thu, 30 Mar 2017 00:00:00 +0100</pubDate>
         <link>https://idarlington.github.io/2017/Getting-started-avro/</link>
