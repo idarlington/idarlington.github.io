@@ -1,4 +1,4 @@
-# Idarlington's Space
+# Idarlington
 
 > This is a collection of my thoughts on Software development, Things I Learn and * 
 
