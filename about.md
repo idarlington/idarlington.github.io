@@ -14,7 +14,7 @@ My name is **Ikenna Darlington Ogbajie**, Ikenna means the *father's strength* i
 
 ![Ikenna Darlington Ogbajie](/assets/images/author.png "Ikenna Darlington")
 
-I am a full stack software developer with experience in DevOps and currently program with different languages (`Scala`, `PHP`, `Python`, `JavaScript`). I am a co-organizer of [Lagos Scala](https://twitter.com/lagosscala). Other technologies I have worked with are `Lift framework`, `Spark`, `D3.js`, `MySQL`, `Elasticsearch`, `MongoDB`, `CakePHP`, `Flask`, `React`, `HTML` and `CSS`. I am interested in `Machine learning` and `Data Visualization`.
+I am a full stack software developer with experience in DevOps and currently program with different languages (`Scala`, `PHP`, `Python`, `JavaScript`). I am currently co-organizer of [Lagos Scala](https://twitter.com/lagosscala). Other technologies I have worked with are `Lift framework`, `Spark`, `D3.js`, `MySQL`, `Elasticsearch`, `MongoDB`, `CakePHP`, `Flask`, `React`, `HTML` and `CSS`. I am interested in `Machine learning` and `Data Visualization`.
 
 I enjoy learning new things and reading about quite a number of things and watching movies. I also like underdog stories (who doesn't?) and product/ business strategy stories.
 
