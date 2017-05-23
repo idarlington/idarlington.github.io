@@ -5,9 +5,41 @@
     <description>Random thougths and TILs.</description>
     <link>https://idarlington.github.io/</link>
     <atom:link href="https://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 May 2017 10:33:06 +0100</pubDate>
-    <lastBuildDate>Tue, 23 May 2017 10:33:06 +0100</lastBuildDate>
+    <pubDate>Tue, 23 May 2017 10:42:54 +0100</pubDate>
+    <lastBuildDate>Tue, 23 May 2017 10:42:54 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>When you dont feel like coding but have to</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+ol {
+  list-style-type: decimal;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h3 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Slides for the presentation I gave at Lagos Agile October Meetup.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://docs.google.com/presentation/d/1nlQWTGVklmHGDq82OHDp2U96-Oi6Rl7CVkLUQ1cY0nE/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Mon, 22 May 2017 00:00:00 +0100</pubDate>
+        <link>https://idarlington.github.io/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</link>
+        <guid isPermaLink="true">https://idarlington.github.io/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</guid>
+        
+        <category>health, wellbeing</category>
+        
+        
+      </item>
     
       <item>
         <title>Getting started with Apache Avro</title>
