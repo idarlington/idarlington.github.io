@@ -25,7 +25,7 @@ h3 strong {
 }
 </style>
 
-Slides for the presentation I gave at Lagos Agile October Meetup.
+Slides for the presentation I gave at Lagos Agile May Meetup.
 
 
 <iframe src="https://docs.google.com/presentation/d/1nlQWTGVklmHGDq82OHDp2U96-Oi6Rl7CVkLUQ1cY0nE/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
