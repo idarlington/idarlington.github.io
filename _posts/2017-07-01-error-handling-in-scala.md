@@ -5,7 +5,7 @@ description: "Presentation at Lagos Scala Meetup Group"
 comments: true
 keywords: "error handling, scala"
 tags:
-- scala
+- Scala
 ---
 
 <style>
