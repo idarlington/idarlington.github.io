@@ -16,8 +16,6 @@ My name is **Ikenna Darlington Ogbajie**, Ikenna means the *father's strength* i
 
 I am a full stack software developer with experience in DevOps and currently program with different languages (`Scala`, `PHP`, `Python`, `JavaScript`). I am currently co-organizer of [Lagos Scala](https://twitter.com/lagosscala).
 
-I enjoy learning new things, reading about quite a number of things and interesting movies. I also like underdog stories (who doesn't?) and product/business strategy stories.
-
 ## On the Web
 I use *idarlington* (A combination of my first and middle name) as my user name on networks when available.
 
