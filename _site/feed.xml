@@ -3,11 +3,161 @@
   <channel>
     <title>Idarlington</title>
     <description>Random thougths and TILs.</description>
-    <link>https://idarlington.github.io/</link>
-    <atom:link href="https://idarlington.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 May 2017 10:42:54 +0100</pubDate>
-    <lastBuildDate>Tue, 23 May 2017 10:42:54 +0100</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 30 Oct 2018 17:22:37 +0100</pubDate>
+    <lastBuildDate>Tue, 30 Oct 2018 17:22:37 +0100</lastBuildDate>
+    <generator>Jekyll v3.8.4</generator>
+    
+      <item>
+        <title>Uncommon Kafka CLI commands</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+ol {
+  list-style-type: decimal;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h3 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Recently, a colleague asked how to view keys of consumed records and I wasn’t sure it was possible.  I thought I knew all the important cli commands then. Later on, after a google search, I found it was possible.&lt;/p&gt;
+
+&lt;p&gt;I decided to spend some time going through the Kafka console classes I use the most — &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.ConsoleConsumer&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.ConsoleProducer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are couple of not so common commands you can use in the CLI:&lt;/p&gt;
+
+&lt;h2 id=&quot;kafka-console-consumer&quot;&gt;Kafka Console Consumer&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;print.key:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This property configures the console consumer to print the keys of the messages it consumes. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;print.value:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;When you are not concerned with printing the values of the records being consumed, you can set this property which configures the console consumer to/not to print values of records being consumed. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;print.timestamp:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;You can configure the console consumer to/not to print the timestamp of records being consumed. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;NO_TIMESTAMP&lt;/code&gt; is printed out if there is no timestamp configured for the records and the property is set to true.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;key.separator:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This property configures the character that separates the key and value when they are both printed. The default value is the tab character &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;line.separator:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;Property configuring the character separating each record being consumed. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;formatter:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;The name of the class to use for formatting kafka records being printed. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.DefaultMessageFormatter&lt;/code&gt;.
+  Other formatters are: &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.LoggingMessageFormatter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.NoOpMessageFormatter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.ChecksumMessageFormatter&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example of console consumer command using the flags and properties defined above:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt;/span&gt; localhost:9092 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; test-topic &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--from-beginning&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--formatter&lt;/span&gt; kafka.tools.DefaultMessageFormatter &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; print.key&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; print.value&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; key.deserializer&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;org.apache.kafka.common.serialization.StringDeserializer &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; value.deserializer&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;org.apache.kafka.common.serialization.StringSerializer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;kafka-console-producer&quot;&gt;Kafka Console Producer&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;key.separator:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;By default inputs to the Kafka producer console are recognised as values and null is used for the keys. This property allows users input key and value messages in the producer console.
+  It represents the character separting the key and value. The default value is the &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; character. It has to be used with the &lt;code class=&quot;highlighter-rouge&quot;&gt;parse.key&lt;/code&gt; property.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;parse.key:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This property indicates if the key is to be serialized, it is used with the &lt;code class=&quot;highlighter-rouge&quot;&gt;key.separator&lt;/code&gt; property. The default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;ignore.error:&lt;/em&gt;&lt;/p&gt;
+
+    &lt;p&gt;This property configures the console producer to ignore errors when the &lt;code class=&quot;highlighter-rouge&quot;&gt;key.separator&lt;/code&gt; property is set and there is not used in an input line in the console.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example of console producer command using the flags and properties defined above:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kafka-console-producer.sh &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--broker-list&lt;/span&gt; localhost:9092 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; test-topic &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;parse.key=true&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--property&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;key.separator=-&quot;&lt;/span&gt;
+
+
+key1-value1
+key2-value2
+key3-value3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 30 Oct 2018 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/2018/Uncommon-Kafka-cli-commands/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/Uncommon-Kafka-cli-commands/</guid>
+        
+        <category>Kafka</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Error handling in Scala</title>
+        <description>&lt;style&gt;
+ul {
+  list-style-type: square;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+ol {
+  list-style-type: decimal;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+h3 strong {
+  font-weight:normal;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Slides for the presentation I gave at Lagos Scala July Meetup.&lt;/p&gt;
+
+&lt;iframe src=&quot;https://docs.google.com/presentation/d/e/2PACX-1vTaOe8A2WNqhkCX8jis7NwStLgXjX-4pODQGr88ugKbSFf18bT_58Dt3GK_H1axhtHPGc63v8hiHAXH/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Sat, 01 Jul 2017 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2017/error-handling-in-scala/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/error-handling-in-scala/</guid>
+        
+        <category>Scala</category>
+        
+        
+      </item>
     
       <item>
         <title>When you dont feel like coding but have to</title>
@@ -28,13 +178,13 @@ h3 strong {
 }
 &lt;/style&gt;
 
-&lt;p&gt;Slides for the presentation I gave at Lagos Agile October Meetup.&lt;/p&gt;
+&lt;p&gt;Slides for the presentation I gave at Lagos Agile May Meetup.&lt;/p&gt;
 
 &lt;iframe src=&quot;https://docs.google.com/presentation/d/1nlQWTGVklmHGDq82OHDp2U96-Oi6Rl7CVkLUQ1cY0nE/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
 </description>
-        <pubDate>Mon, 22 May 2017 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</guid>
+        <pubDate>Mon, 22 May 2017 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/what-to-do-when-you-dont-feel-like-coding-but-have-to/</guid>
         
         <category>health, wellbeing</category>
         
@@ -121,9 +271,9 @@ h3 strong {
     &lt;p&gt;A record is a collection of multiple types. A record is equivalent to a JSON object or a dictionary in python.&lt;/p&gt;
 
     &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Point&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Point&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;int&quot;&lt;/span&gt;
@@ -143,9 +293,9 @@ h3 strong {
     &lt;p&gt;An enumeration is a list of items in a collection.&lt;/p&gt;
 
     &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;enum&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Suit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;symbols&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;enum&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Suit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;symbols&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
         &lt;span class=&quot;s2&quot;&gt;&quot;SPADES&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;s2&quot;&gt;&quot;HEARTS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;s2&quot;&gt;&quot;DIAMONDS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -159,7 +309,7 @@ h3 strong {
 
     &lt;h4 id=&quot;arrays&quot;&gt;&lt;em&gt;Arrays:&lt;/em&gt;&lt;/h4&gt;
 
-    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; type &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; array &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; items &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; int &quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; type &quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; array &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; items &quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; int &quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
   &lt;/li&gt;
 
@@ -168,7 +318,7 @@ h3 strong {
     &lt;h4 id=&quot;maps&quot;&gt;&lt;em&gt;Maps:&lt;/em&gt;&lt;/h4&gt;
     &lt;p&gt;Map keys are assumed to be strings. Eg :&lt;/p&gt;
 
-    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;map&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;values&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;map&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;values&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
   &lt;/li&gt;
 
@@ -193,7 +343,7 @@ h3 strong {
 &lt;p&gt;Creating a schema for this Object&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A green door&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -227,10 +377,10 @@ h3 strong {
 &lt;p&gt;would result in :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;namespace&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;com.idarlington.avro&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stream&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;namespace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;com.idarlington.avro&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;record&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stream&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
@@ -269,9 +419,9 @@ h3 strong {
 
 &lt;p&gt;My next post would be on serialzing and deserializing with Avro. If you like this post, please share ♥.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 30 Mar 2017 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2017/Getting-started-avro/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2017/Getting-started-avro/</guid>
+        <pubDate>Thu, 30 Mar 2017 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2017/Getting-started-avro/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/Getting-started-avro/</guid>
         
         <category>Avro</category>
         
@@ -357,8 +507,8 @@ h3 strong {
 
     &lt;p&gt;OR&lt;/p&gt;
 
-    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;replication&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-   &lt;span class=&quot;s&quot;&gt;replSetName&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;replset&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;you&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;have&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;chosen&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;replication&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+   &lt;span class=&quot;na&quot;&gt;replSetName &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;replset&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;you&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;have&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;chosen&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
     &lt;p&gt;For &lt;strong&gt;MongoDB 2.4 and below&lt;/strong&gt;&lt;/p&gt;
 
@@ -416,8 +566,8 @@ h3 strong {
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 14 Nov 2016 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2016/mongodb-replication/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2016/mongodb-replication/</guid>
+        <link>http://localhost:4000/2016/mongodb-replication/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/mongodb-replication/</guid>
         
         <category>MongoDB</category>
         
@@ -447,9 +597,9 @@ h3 strong {
 
 &lt;iframe src=&quot;https://docs.google.com/presentation/d/15SDgIM70gJxCIF3UD5tiA5LmrfyDKwKizLNU6KV2hBg/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
 </description>
-        <pubDate>Mon, 24 Oct 2016 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2016/why-scala-lagos-scala-meetup/</guid>
+        <pubDate>Mon, 24 Oct 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2016/why-scala-lagos-scala-meetup/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/why-scala-lagos-scala-meetup/</guid>
         
         <category>Scala</category>
         
@@ -556,9 +706,9 @@ h3 strong {
 
 &lt;p&gt;Wishing you a smooth Journey in Scala ; )&lt;/p&gt;
 </description>
-        <pubDate>Thu, 14 Jul 2016 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2016/best-resources-for-learning-scala/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2016/best-resources-for-learning-scala/</guid>
+        <pubDate>Thu, 14 Jul 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2016/best-resources-for-learning-scala/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/best-resources-for-learning-scala/</guid>
         
         <category>Scala</category>
         
@@ -600,27 +750,27 @@ h3 strong {
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;surname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setSurname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setSurname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;surname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getSurname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSurname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -674,7 +824,7 @@ h3 strong {
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/loved-scala.png&quot; alt=&quot;Loved Scala&quot; title=&quot;scala top paying tech 2016&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;case-&quot;&gt;case &lt;strong&gt;_&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;case-_&quot;&gt;case &lt;strong&gt;_&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;Other features that make Scala awesome are&lt;/p&gt;
 
@@ -689,12 +839,64 @@ h3 strong {
 
 &lt;p&gt;So, what do you think? Drop your thoughts in the comments section.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 10 Jul 2016 00:00:00 +0100</pubDate>
-        <link>https://idarlington.github.io/2016/why-you-should-learn-scala/</link>
-        <guid isPermaLink="true">https://idarlington.github.io/2016/why-you-should-learn-scala/</guid>
+        <pubDate>Sun, 10 Jul 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2016/why-you-should-learn-scala/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/why-you-should-learn-scala/</guid>
         
         <category>Scala</category>
         
+        
+      </item>
+    
+      <item>
+        <title>错误</title>
+        <description></description>
+        <pubDate>Sun, 03 Apr 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2016/04/03/%E9%94%99%E8%AF%AF.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/04/03/%E9%94%99%E8%AF%AF.html</guid>
+        
+        
+        <category>vendor</category>
+        
+        <category>cache</category>
+        
+        <category>ruby</category>
+        
+        <category>2.5.0</category>
+        
+        <category>gems</category>
+        
+        <category>jekyll-sitemap-1.2.0</category>
+        
+        <category>spec</category>
+        
+        <category>fixtures</category>
+        
+      </item>
+    
+      <item>
+        <title>错误</title>
+        <description></description>
+        <pubDate>Sat, 02 Apr 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2016/04/02/错误.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/04/02/错误.html</guid>
+        
+        
+        <category>vendor</category>
+        
+        <category>cache</category>
+        
+        <category>ruby</category>
+        
+        <category>2.5.0</category>
+        
+        <category>gems</category>
+        
+        <category>jekyll-sitemap-1.2.0</category>
+        
+        <category>spec</category>
+        
+        <category>fixtures</category>
         
       </item>
     
