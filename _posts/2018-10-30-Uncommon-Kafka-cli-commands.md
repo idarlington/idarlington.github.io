@@ -28,7 +28,7 @@ Recently, a colleague asked how to view keys of consumed records and I wasn't su
  
 I decided to spend some time going through the Kafka console classes I use the most &mdash; `kafka.tools.ConsoleConsumer` and `kafka.tools.ConsoleProducer`.
 
-Here are couple of not so common commands you can use in the CLI:
+Here are some not so common commands you can use in the CLI:
 
 ## Kafka Console Consumer
 

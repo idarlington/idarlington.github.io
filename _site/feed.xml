@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 30 Oct 2018 17:22:37 +0100</pubDate>
-    <lastBuildDate>Tue, 30 Oct 2018 17:22:37 +0100</lastBuildDate>
+    <pubDate>Tue, 30 Oct 2018 17:46:19 +0100</pubDate>
+    <lastBuildDate>Tue, 30 Oct 2018 17:46:19 +0100</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
@@ -32,7 +32,7 @@ h3 strong {
 
 &lt;p&gt;I decided to spend some time going through the Kafka console classes I use the most — &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.ConsoleConsumer&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka.tools.ConsoleProducer&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Here are couple of not so common commands you can use in the CLI:&lt;/p&gt;
+&lt;p&gt;Here are some not so common commands you can use in the CLI:&lt;/p&gt;
 
 &lt;h2 id=&quot;kafka-console-consumer&quot;&gt;Kafka Console Consumer&lt;/h2&gt;
 
