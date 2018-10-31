@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Getting started with Apache Avro"
+title: "Getting started with Apache Avro"
 description: "Guide to understanding apache avro and setting up avro schemas"
 comments: true
 keywords: "Avro, Apache Avro, Avro Schema"

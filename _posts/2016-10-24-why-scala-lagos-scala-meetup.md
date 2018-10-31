@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Why Scala ?"
+title: "Why Scala ?"
 description: "Presentation at Lagos Scala Meetup Group"
 comments: true
 keywords: "scala resources, best scala, learning scala, scala, getting started with scala"
