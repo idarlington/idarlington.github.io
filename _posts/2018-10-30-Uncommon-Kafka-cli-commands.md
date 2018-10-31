@@ -7,6 +7,7 @@ keywords: "Kafka, Kafka CLI"
 tags:
 - Kafka
 ---
+
 <style>
 ul {
   list-style-type: square;
@@ -23,6 +24,7 @@ h3 strong {
   font-weight:normal;
 }
 </style>
+
 
 Recently, a colleague asked how to view keys of consumed records and I wasn't sure it was possible.  I thought I knew all the important cli commands then. Later on, after a google search, I found it was possible.
  
@@ -80,7 +82,7 @@ kafka-console-consumer.sh --bootstrap-server localhost:9092 \
 - *key.separator:*
 
     By default inputs to the Kafka producer console are recognised as values and null is used for the keys. This property allows users input key and value messages in the producer console.
-    It represents the character separting the key and value. The default value is the `\t` character. It has to be used with the `parse.key` property.
+    It represents the character separating the key and value. The default value is the `\t` character. It has to be used with the `parse.key` property.
 
 - *parse.key:*
 

@@ -1,5 +1,6 @@
 ---
 layout: post
+id: 3733467986
 title:  "Best resources for learning Scala"
 description: "Best resources for learning Scala"
 comments: true

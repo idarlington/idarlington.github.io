@@ -5,8 +5,8 @@
     <description>Random thougths and TILs.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 Oct 2018 09:55:53 +0100</pubDate>
-    <lastBuildDate>Wed, 31 Oct 2018 09:55:53 +0100</lastBuildDate>
+    <pubDate>Wed, 31 Oct 2018 10:59:36 +0100</pubDate>
+    <lastBuildDate>Wed, 31 Oct 2018 10:59:36 +0100</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
@@ -90,7 +90,7 @@ kafka-console-consumer.sh &lt;span class=&quot;nt&quot;&gt;--bootstrap-server&lt
     &lt;p&gt;&lt;em&gt;key.separator:&lt;/em&gt;&lt;/p&gt;
 
     &lt;p&gt;By default inputs to the Kafka producer console are recognised as values and null is used for the keys. This property allows users input key and value messages in the producer console.
-  It represents the character separting the key and value. The default value is the &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; character. It has to be used with the &lt;code class=&quot;highlighter-rouge&quot;&gt;parse.key&lt;/code&gt; property.&lt;/p&gt;
+  It represents the character separating the key and value. The default value is the &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; character. It has to be used with the &lt;code class=&quot;highlighter-rouge&quot;&gt;parse.key&lt;/code&gt; property.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;em&gt;parse.key:&lt;/em&gt;&lt;/p&gt;
