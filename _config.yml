@@ -8,7 +8,7 @@ url: "https://idarlington.github.io"
 baseurl: ""
 
 google_analytics: UA-50842645-1
-disqus_shortname: "idarlington"
+disqus_shortname: "idarlington-1"
 
 # Build settings
 permalink   : /:year/:title/
