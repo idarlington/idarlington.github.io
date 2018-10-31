@@ -3,8 +3,8 @@
 title: Idarlington
 stylished_title: Idarlington
 description: "Random thougths and TILs."
-keywords: "TIL, web, coding, scala, nigeria, javascript, devops"
-url: https://idarlington.github.io
+keywords: "TIL, web, coding, scala, javascript"
+url: "https://idarlington.github.io"
 baseurl: ""
 
 google_analytics: UA-50842645-1
@@ -25,7 +25,7 @@ destination: _site
 # Sass configuration
 sass:
   sass_dir: assets/scss
-  style: compressed # expanded
+  style: compressed
 
 # Author settings
 author:
@@ -36,13 +36,6 @@ author:
   url      : http://idarlington.github.io
   github   : http://github.com/idarlington
   twitter  : http://twitter.com/idarlington
- # facebook : http://facebook.com/fernando.dev
-  #linkedin : http://linkedin.com/in/lizhihao
-
-# social settings
-# og_locale: "pt_BR"
-# twitter_card: "summary_large_image"
-# twitter_site: "@nandomoreirame"
 
 project:
     repo: https://github.com/idarlington.github.io
@@ -50,7 +43,6 @@ project:
     author: Ikenna Ogbajie
 
 gems:
-  #- bourbon
   - jekyll-paginate
   - jekyll-sitemap
 
