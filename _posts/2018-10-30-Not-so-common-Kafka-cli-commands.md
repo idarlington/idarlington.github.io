@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Uncommon Kafka CLI commands"
+title: "Not so common Kafka CLI commands"
 description: "Some rarely used Kafka CLI commands to help in debugging"
 comments: true
 keywords: "Kafka, Kafka CLI"
