@@ -1,5 +1,6 @@
 ---
 layout: post
+hidden: true
 title:  "When you dont feel like coding but have to"
 description: "Presentation at Lagos Agile Meetup Group"
 comments: true
