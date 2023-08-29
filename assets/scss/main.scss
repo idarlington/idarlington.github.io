@@ -1,8 +1,8 @@
 
-@use "bourbon/bourbon";
+@import "bourbon/bourbon";
 
-@use "variables";
-@use "base/base";
+@import "variables";
+@import "base/base";
 
-@use "layout";
-@use "syntax-highlighting";
+@import "layout";
+@import "syntax-highlighting";

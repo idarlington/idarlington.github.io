@@ -1,5 +1,3 @@
-@use "../variables";
-
 ul,
 ol {
 
@@ -9,24 +7,24 @@ ol {
 
   &%default-ul {
     list-style-type: disc;
-    margin-bottom: variables.$small-spacing;
-    padding-left: variables.$base-spacing;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
   }
 
   &%default-ol {
     list-style-type: decimal;
-    margin-bottom: variables.$small-spacing;
-    padding-left: variables.$base-spacing;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
   }
 
 }
 
 dl {
-  margin-bottom: variables.$small-spacing;
+  margin-bottom: $small-spacing;
 
   dt {
     font-weight: bold;
-    margin-top: variables.$small-spacing;
+    margin-top: $small-spacing;
   }
 
   dd {

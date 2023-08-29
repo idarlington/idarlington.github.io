@@ -1,6 +1,4 @@
-@use "../addons/prefixer";
-
 @mixin hyphens($hyphenation: none) {
   // none | manual | auto
-  @include prefixer.prefixer(hyphens, $hyphenation, webkit moz ms spec);
+  @include prefixer(hyphens, $hyphenation, webkit moz ms spec);
 }

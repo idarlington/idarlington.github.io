@@ -1,10 +1,3 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:meta";
-@use "sass:string";
-@use "../helpers/linear-gradient-parser";
-@use "../helpers/radial-gradient-parser";
-
 //************************************************************************//
 // Background-image property for adding multiple background images with
 // gradients, or for stringing multiple gradients together.
@@ -18,9 +11,9 @@
     $webkit-image: ();
     $spec-image: ();
 
-    @if (meta.type-of($image) == string) {
-      $url-str:       string.slice($image, 1, 3);
-      $gradient-type: string.slice($image, 1, 6);
+    @if (type-of($image) == string) {
+      $url-str:       str-slice($image, 1, 3);
+      $gradient-type: str-slice($image, 1, 6);
 
       @if $url-str == "url" {
         $webkit-image: $image;
@@ -28,20 +21,20 @@
       }
 
       @else if $gradient-type == "linear" {
-        $gradients: linear-gradient-parser.linear-gradient-parser($image);
-        $webkit-image:  map.get($gradients, webkit-image);
-        $spec-image:    map.get($gradients, spec-image);
+        $gradients: _linear-gradient-parser($image);
+        $webkit-image:  map-get($gradients, webkit-image);
+        $spec-image:    map-get($gradients, spec-image);
       }
 
       @else if $gradient-type == "radial" {
-        $gradients: radial-gradient-parser.radial-gradient-parser($image);
-        $webkit-image: map.get($gradients, webkit-image);
-        $spec-image:   map.get($gradients, spec-image);
+        $gradients: _radial-gradient-parser($image);
+        $webkit-image: map-get($gradients, webkit-image);
+        $spec-image:   map-get($gradients, spec-image);
       }
     }
 
-    $webkit-images: list.append($webkit-images, $webkit-image, comma);
-    $spec-images:   list.append($spec-images,   $spec-image,   comma);
+    $webkit-images: append($webkit-images, $webkit-image, comma);
+    $spec-images:   append($spec-images,   $spec-image,   comma);
   }
 
   background-image: $webkit-images;

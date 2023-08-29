@@ -1,21 +1,18 @@
-@use "sass:color";
-@use "variables";
-
 /**
 * Syntax highlighting styles
 */
 .highlight {
-  margin: variables.$base-spacing 0;
+  margin: $base-spacing 0;
   padding: 0;
-  box-shadow: 0px 0px 2px rgba(variables.$black-color, .1);
+  box-shadow: 0px 0px 2px rgba($black-color, .1);
 
   .highlighter-rouge &, &, .hll, pre, code {
-    background-color: color.adjust(variables.$light-gray-color, $lightness: 13%) !important;
+    background-color: lighten($light-gray-color, 13%) !important;
   }
 
   pre {
     margin: 0;
-    padding: variables.$base-spacing;
+    padding: $base-spacing;
     white-space: pre;
     line-height: 23px;
     overflow-x: auto;
@@ -24,7 +21,7 @@
     word-wrap: inherit;
 
     &, code {
-      color: variables.$base-font-color;
+      color: $base-font-color;
     }
 
     code {

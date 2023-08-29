@@ -1,5 +1,3 @@
-@use "../addons/prefixer";
-
 @mixin appearance($value) {
-  @include prefixer.prefixer(appearance, $value, webkit moz ms o spec);
+  @include prefixer(appearance, $value, webkit moz ms o spec);
 }

@@ -1,6 +1,3 @@
-@use "../css3/keyframes";
-@use "../settings/prefixer";
-
 @charset "UTF-8";
 
 /// A mixin for generating vendor prefixes on non-standardized properties.
@@ -35,23 +32,23 @@
 @mixin prefixer($property, $value, $prefixes) {
   @each $prefix in $prefixes {
     @if $prefix == webkit {
-      @if keyframes.$prefix-for-webkit {
+      @if $prefix-for-webkit {
         -webkit-#{$property}: $value;
       }
     } @else if $prefix == moz {
-      @if keyframes.$prefix-for-mozilla {
+      @if $prefix-for-mozilla {
         -moz-#{$property}: $value;
       }
     } @else if $prefix == ms {
-      @if keyframes.$prefix-for-microsoft {
+      @if $prefix-for-microsoft {
         -ms-#{$property}: $value;
       }
     } @else if $prefix == o {
-      @if keyframes.$prefix-for-opera {
+      @if $prefix-for-opera {
         -o-#{$property}: $value;
       }
     } @else if $prefix == spec {
-      @if keyframes.$prefix-for-spec {
+      @if $prefix-for-spec {
         #{$property}: $value;
       }
     } @else  {

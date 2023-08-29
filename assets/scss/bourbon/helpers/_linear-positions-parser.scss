@@ -1,42 +1,39 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:string";
-@function linear-positions-parser($pos) {
-  $type: meta.type-of(list.nth($pos, 1));
+@function _linear-positions-parser($pos) {
+  $type: type-of(nth($pos, 1));
   $spec: null;
   $degree: null;
   $side: null;
   $corner: null;
-  $length: list.length($pos);
+  $length: length($pos);
   // Parse Side and corner positions
   @if ($length > 1) {
-    @if list.nth($pos, 1) == "to" { // Newer syntax
-      $side: list.nth($pos, 2);
+    @if nth($pos, 1) == "to" { // Newer syntax
+      $side: nth($pos, 2);
 
       @if $length == 2 { // eg. to top
         // Swap for backwards compatibility
-        $degree: position-flipper(list.nth($pos, 2));
+        $degree: _position-flipper(nth($pos, 2));
       }
       @else if $length == 3 { // eg. to top left
-        $corner: list.nth($pos, 3);
+        $corner: nth($pos, 3);
       }
     }
     @else if $length == 2 { // Older syntax ("top left")
-      $side: position-flipper(list.nth($pos, 1));
-      $corner: position-flipper(list.nth($pos, 2));
+      $side: _position-flipper(nth($pos, 1));
+      $corner: _position-flipper(nth($pos, 2));
     }
 
     @if ("#{$side} #{$corner}" == "left top") or ("#{$side} #{$corner}" == "top left") {
-      $degree: position-flipper(#{$side}) position-flipper(#{$corner});
+      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
     }
     @else if ("#{$side} #{$corner}" == "right top") or ("#{$side} #{$corner}" == "top right") {
-      $degree: position-flipper(#{$side}) position-flipper(#{$corner});
+      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
     }
     @else if ("#{$side} #{$corner}" == "right bottom") or ("#{$side} #{$corner}" == "bottom right") {
-      $degree: position-flipper(#{$side}) position-flipper(#{$corner});
+      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
     }
     @else if ("#{$side} #{$corner}" == "left bottom") or ("#{$side} #{$corner}" == "bottom left") {
-      $degree: position-flipper(#{$side}) position-flipper(#{$corner});
+      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
     }
     $spec: to $side $corner;
   }
@@ -44,19 +41,19 @@
     // Swap for backwards compatibility
     @if $type == string {
       $degree: $pos;
-      $spec: to position-flipper($pos);
+      $spec: to _position-flipper($pos);
     }
     @else {
       $degree: -270 - $pos; //rotate the gradient opposite from spec
       $spec: $pos;
     }
   }
-  $degree: string.unquote($degree + ",");
-  $spec:   string.unquote($spec + ",");
+  $degree: unquote($degree + ",");
+  $spec:   unquote($spec + ",");
   @return $degree $spec;
 }
 
-@function position-flipper($pos) {
+@function _position-flipper($pos) {
   @return if($pos == left, right, null)
          if($pos == right, left, null)
          if($pos == top, bottom, null)

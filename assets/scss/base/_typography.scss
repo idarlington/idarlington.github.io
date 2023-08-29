@@ -1,17 +1,12 @@
-@use "sass:color";
-@use "../bourbon/functions/px-to-rem";
-@use "../bourbon/functions/shade";
-@use "../variables";
-
 @import url("//fonts.googleapis.com/css?family=Open+Sans:400,300,700");
 // @import url("//fonts.googleapis.com/css?family=Merriweather:400,300,700");
 
 body {
-  color: variables.$base-font-color;
-  font-family: variables.$base-font-family;
+  color: $base-font-color;
+  font-family: $base-font-family;
   font-feature-settings: "kern", "liga", "pnum";
-  font-size: variables.$base-font-size;
-  line-height: variables.$base-line-height;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 h1,
@@ -20,61 +15,61 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: variables.$heading-font-family;
-  font-size: variables.$base-font-size;
-  line-height: variables.$heading-line-height;
-  margin: 0 0 variables.$small-spacing;
+  font-family: $heading-font-family;
+  font-size: $base-font-size;
+  line-height: $heading-line-height;
+  margin: 0 0 $small-spacing;
   font-weight: 300;
 }
 
 h1 {
-  font-size: px-to-rem.rem(30);
+  font-size: rem(30);
 }
 
 h2 {
-  font-size: px-to-rem.rem(26);
+  font-size: rem(26);
 }
 
 h3 {
-  font-size: px-to-rem.rem(24);
+  font-size: rem(24);
 }
 
 h4 {
-  font-size: px-to-rem.rem(20);
+  font-size: rem(20);
 }
 
 h5,
 h6 {
-  font-size: px-to-rem.rem(16);
+  font-size: rem(16);
 }
 
 p {
-  margin: 0 0 variables.$small-spacing;
+  margin: 0 0 $small-spacing;
 
   &.lead {
-    font-size: px-to-rem.rem(22);
+    font-size: rem(22);
     font-weight: 300;
   }
 }
 
 a {
-  color: variables.$action-color;
+  color: $action-color;
   text-decoration: none;
-  transition: color variables.$base-duration variables.$base-timing;
+  transition: color $base-duration $base-timing;
 
   &:active,
   &:focus,
   &:hover {
-    color: shade.shade(variables.$action-color, 25%);
+    color: shade($action-color, 25%);
   }
 }
 
 hr {
-  border-bottom: variables.$base-border;
+  border-bottom: $base-border;
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: variables.$base-spacing 0;
+  margin: $base-spacing 0;
 }
 
 img,
@@ -84,11 +79,11 @@ picture {
 }
 
 blockquote {
-  padding: 0 0 0 variables.$base-spacing;
-  margin: variables.$base-spacing 0;
-  color: variables.$medium-gray-color;
+  padding: 0 0 0 $base-spacing;
+  margin: $base-spacing 0;
+  color: $medium-gray-color;
   line-height: 1.8;
-  border-left: variables.$small-spacing solid variables.$light-gray-color;
+  border-left: $small-spacing solid $light-gray-color;
 }
 
 code {
@@ -99,7 +94,7 @@ code {
   font-size: 0.9em;
   margin: 0;
   padding: 0 5px;
-  background-color: color.adjust(variables.$light-gray-color, $lightness: 13%);
+  background-color: lighten($light-gray-color, 13%);
 }
 
 pre {

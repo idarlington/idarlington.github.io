@@ -1,5 +1,3 @@
-@use "../addons/prefixer";
-
 @mixin user-select($value: none) {
-  @include prefixer.prefixer(user-select, $value, webkit moz ms spec);
+  @include prefixer(user-select, $value, webkit moz ms spec);
 }

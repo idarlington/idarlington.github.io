@@ -1,5 +1,3 @@
-@use "../functions/assign-inputs";
-
 @charset "UTF-8";
 
 /// Generates variables for all text-based inputs. Please note that you must use interpolation on the variable: `#{$all-text-inputs}`.
@@ -109,7 +107,7 @@ $text-inputs-list: 'input[type="color"]',
                    'input:not([type])',
                    'textarea';
 
-$all-text-inputs:        assign-inputs.assign-inputs($text-inputs-list);
-$all-text-inputs-active: assign-inputs.assign-inputs($text-inputs-list, active);
-$all-text-inputs-focus:  assign-inputs.assign-inputs($text-inputs-list, focus);
-$all-text-inputs-hover:  assign-inputs.assign-inputs($text-inputs-list, hover);
+$all-text-inputs:        assign-inputs($text-inputs-list);
+$all-text-inputs-active: assign-inputs($text-inputs-list, active);
+$all-text-inputs-focus:  assign-inputs($text-inputs-list, focus);
+$all-text-inputs-hover:  assign-inputs($text-inputs-list, hover);

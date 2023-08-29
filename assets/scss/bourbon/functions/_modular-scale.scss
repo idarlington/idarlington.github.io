@@ -1,9 +1,3 @@
-@use "sass:math";
-
-@use "sass:list";
-@use "../settings/px-to-em" as settings-px-to-em;
-@use "px-to-em" as functions-px-to-em;
-
 // Scaling Variables
 $golden:           1.618;
 $minor-second:     1.067;
@@ -24,16 +18,16 @@ $major-twelfth:    3;
 $double-octave:    4;
 
 $modular-scale-ratio: $perfect-fourth !default;
-$modular-scale-base: functions-px-to-em.em(settings-px-to-em.$em-base) !default;
+$modular-scale-base: em($em-base) !default;
 
 @function modular-scale($increment, $value: $modular-scale-base, $ratio: $modular-scale-ratio) {
-  $v1: list.nth($value, 1);
-  $v2: list.nth($value, list.length($value));
+  $v1: nth($value, 1);
+  $v2: nth($value, length($value));
   $value: $v1;
 
   // scale $v2 to just above $v1
   @while $v2 > $v1 {
-    $v2: math.div($v2, $ratio); // will be off-by-1
+    $v2: ($v2 / $ratio); // will be off-by-1
   }
   @while $v2 < $v1 {
     $v2: ($v2 * $ratio); // will fix off-by-1
@@ -57,15 +51,15 @@ $modular-scale-base: functions-px-to-em.em(settings-px-to-em.$em-base) !default;
   @if $increment < 0 {
     // adjust $v2 to just below $v1
     @if $double-stranded {
-      $v2: math.div($v2, $ratio);
+      $v2: ($v2 / $ratio);
     }
 
     @for $i from $increment through -1 {
-      @if $double-stranded and math.div($v1, $ratio) < $v2 {
+      @if $double-stranded and ($v1 / $ratio) < $v2 {
         $value: $v2;
-        $v2: math.div($v2, $ratio);
+        $v2: ($v2 / $ratio);
       } @else {
-        $v1: math.div($v1, $ratio);
+        $v1: ($v1 / $ratio);
         $value: $v1;
       }
     }

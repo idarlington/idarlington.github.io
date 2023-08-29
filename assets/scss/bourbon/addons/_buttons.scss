@@ -1,5 +1,3 @@
-@use "../functions/assign-inputs";
-
 @charset "UTF-8";
 
 /// Generates variables for all buttons. Please note that you must use interpolation on the variable: `#{$all-buttons}`.
@@ -55,10 +53,10 @@ $buttons-list: 'button',
                'input[type="reset"]',
                'input[type="submit"]';
 
-$all-buttons:        assign-inputs.assign-inputs($buttons-list);
-$all-buttons-active: assign-inputs.assign-inputs($buttons-list, active);
-$all-buttons-focus:  assign-inputs.assign-inputs($buttons-list, focus);
-$all-buttons-hover:  assign-inputs.assign-inputs($buttons-list, hover);
+$all-buttons:        assign-inputs($buttons-list);
+$all-buttons-active: assign-inputs($buttons-list, active);
+$all-buttons-focus:  assign-inputs($buttons-list, focus);
+$all-buttons-hover:  assign-inputs($buttons-list, hover);
 
 $all-button-inputs:        $all-buttons;
 $all-button-inputs-active: $all-buttons-active;
