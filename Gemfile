@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 
 group :development do
-  gem 'html-proofer'
   gem 'jekyll', '=3.9.3'
   gem 'webrick'
   gem "kramdown-parser-gfm"
@@ -12,5 +11,5 @@ group :development do
   gem 'pygments.rb', '=2.4.0'
   gem 'sass', '~> 3.4', '>= 3.4.20'
   gem 'jekyll-sitemap'
-  gem "nokogiri", "~> 1.11"
+  gem "nokogiri", "~> 1.15"
 end
