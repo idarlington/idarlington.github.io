@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "../functions/contains";
+
 // Used for creating the source string for fonts using @font-face
 // Reference: http://goo.gl/Ru1bKP
 
@@ -27,14 +30,14 @@
   );
 
   @each $key, $values in $formats-map {
-    @if contains($file-formats, $key) {
-      $file-path: nth($values, 1);
-      $font-format: nth($values, 2);
+    @if contains.contains($file-formats, $key) {
+      $file-path: list.nth($values, 1);
+      $font-format: list.nth($values, 2);
 
       @if $asset-pipeline == true {
-        $src: append($src, font-url($file-path) $font-format, comma);
+        $src: list.append($src, font-url($file-path) $font-format, comma);
       } @else {
-        $src: append($src, url($file-path) $font-format, comma);
+        $src: list.append($src, url($file-path) $font-format, comma);
       }
     }
   }

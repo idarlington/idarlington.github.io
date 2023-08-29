@@ -1,21 +1,27 @@
+@use "sass:math";
+
+@use "../bourbon/addons/text-inputs";
+@use "../bourbon/functions/shade";
+@use "../variables";
+
 fieldset {
-  background-color: $secondary-background-color;
-  border: $base-border;
-  margin: 0 0 $small-spacing;
-  padding: $base-spacing;
+  background-color: variables.$secondary-background-color;
+  border: variables.$base-border;
+  margin: 0 0 variables.$small-spacing;
+  padding: variables.$base-spacing;
 }
 
 input,
 label,
 select {
   display: block;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-family: variables.$base-font-family;
+  font-size: variables.$base-font-size;
 }
 
 label {
   font-weight: 600;
-  margin-bottom: $small-spacing / 2;
+  margin-bottom: variables.$small-spacing * 0.5;
 
   &.required::after {
     content: "*";
@@ -26,36 +32,36 @@ label {
   }
 }
 
-#{$all-text-inputs},
+#{text-inputs.$all-text-inputs},
 select[multiple=multiple] {
-  background-color: $base-background-color;
-  border: $base-border;
-  border-radius: $base-border-radius;
-  box-shadow: $form-box-shadow;
+  background-color: variables.$base-background-color;
+  border: variables.$base-border;
+  border-radius: variables.$base-border-radius;
+  box-shadow: variables.$form-box-shadow;
   box-sizing: border-box;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
-  transition: border-color $base-duration $base-timing;
+  font-family: variables.$base-font-family;
+  font-size: variables.$base-font-size;
+  margin-bottom: variables.$small-spacing;
+  padding: math.div(variables.$base-spacing, 3);
+  transition: border-color variables.$base-duration variables.$base-timing;
   width: 100%;
 
   &:hover {
-    border-color: shade($base-border-color, 20%);
+    border-color: shade.shade(variables.$base-border-color, 20%);
   }
 
   &:focus {
-    border-color: $action-color;
-    box-shadow: $form-box-shadow-focus;
+    border-color: variables.$action-color;
+    box-shadow: variables.$form-box-shadow-focus;
     outline: none;
   }
 
   &:disabled {
-    background-color: shade($base-background-color, 5%);
+    background-color: shade.shade(variables.$base-background-color, 5%);
     cursor: not-allowed;
 
     &:hover {
-      border: $base-border;
+      border: variables.$base-border;
     }
   }
 }
@@ -71,7 +77,7 @@ input[type="search"] {
 input[type="checkbox"],
 input[type="radio"] {
   display: inline;
-  margin-right: $small-spacing / 2;
+  margin-right: variables.$small-spacing * 0.5;
 
   + label {
     display: inline-block;
@@ -79,12 +85,12 @@ input[type="radio"] {
 }
 
 input[type="file"] {
-  margin-bottom: $small-spacing;
+  margin-bottom: variables.$small-spacing;
   width: 100%;
 }
 
 select {
-  margin-bottom: $base-spacing;
+  margin-bottom: variables.$base-spacing;
   max-width: 100%;
   width: auto;
 }

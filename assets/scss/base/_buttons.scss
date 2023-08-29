@@ -1,29 +1,32 @@
+@use "../bourbon/functions/shade";
+@use "../variables";
+
 // #{$all-buttons} {
 
 .button {
   appearance: none;
-  background-color: $action-color;
+  background-color: variables.$action-color;
   border: 0;
-  border-radius: $base-border-radius;
-  color: $white-color;
+  border-radius: variables.$base-border-radius;
+  color: variables.$white-color;
   cursor: pointer;
   display: inline-block;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-family: variables.$base-font-family;
+  font-size: variables.$base-font-size;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: variables.$small-spacing variables.$base-spacing;
   text-decoration: none;
-  transition: background-color $base-duration $base-timing;
+  transition: background-color variables.$base-duration variables.$base-timing;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
 
   &:hover,
   &:focus {
-    background-color: shade($action-color, 20%);
-    color: $white-color;
+    background-color: shade.shade(variables.$action-color, 20%);
+    color: variables.$white-color;
   }
 
   &:disabled {
@@ -31,7 +34,7 @@
     opacity: 0.5;
 
     &:hover {
-      background-color: $action-color;
+      background-color: variables.$action-color;
     }
   }
 }

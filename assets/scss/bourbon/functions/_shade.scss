@@ -1,3 +1,4 @@
+@use "sass:color";
 @charset "UTF-8";
 
 /// Mixes a color with black.
@@ -20,5 +21,5 @@
 /// @return {Color}
 
 @function shade($color, $percent) {
-  @return mix(#000, $color, $percent);
+  @return color.mix(#000, $color, $percent);
 }

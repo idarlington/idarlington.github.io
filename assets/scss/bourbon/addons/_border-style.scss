@@ -1,3 +1,5 @@
+@use "../helpers/directional-values";
+
 @charset "UTF-8";
 
 /// Provides a quick method for targeting `border-style` on specific sides of a box. Use a `null` value to “skip” a side.
@@ -21,5 +23,5 @@
 /// @output `border-style`
 
 @mixin border-style($vals...) {
-  @include directional-property(border, style, $vals...);
+  @include directional-values.directional-property(border, style, $vals...);
 }

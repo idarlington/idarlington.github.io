@@ -26,6 +26,7 @@ destination: _site
 sass:
   sass_dir: assets/scss
   style: compressed
+  sourcemap: never
 
 # Author settings
 author:
@@ -42,7 +43,7 @@ project:
     name: idarlington.github.io
     author: Ikenna Ogbajie
 
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
 

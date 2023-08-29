@@ -1,14 +1,15 @@
+@use "sass:list";
 @mixin triangle($size, $color, $direction) {
-  $width: nth($size, 1);
-  $height: nth($size, length($size));
-  $foreground-color: nth($color, 1);
-  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+  $width: list.nth($size, 1);
+  $height: list.nth($size, list.length($size));
+  $foreground-color: list.nth($color, 1);
+  $background-color: if(list.length($color) == 2, list.nth($color, 2), transparent);
   height: 0;
   width: 0;
 
   @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
-    $width: $width / 2;
-    $height: if(length($size) > 1, $height, $height/2);
+    $width: $width * 0.5;
+    $height: if(list.length($size) > 1, $height, $height*0.5);
 
     @if $direction == up {
       border-bottom: $height solid $foreground-color;

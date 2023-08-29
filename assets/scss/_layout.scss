@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "bourbon/css3/transition";
+@use "bourbon/functions/px-to-rem";
+@use "variables";
+
 * {
   &,
   &:before,
@@ -28,19 +33,19 @@ body {
 }
 
 body {
-  background-color: $base-background-color;
+  background-color: variables.$base-background-color;
   font-weight: 400;
 }
 
 hr {
   border-top: none;
-  border-bottom: 2px solid lighten($light-gray-color, 7%);
+  border-bottom: 2px solid color.adjust(variables.$light-gray-color, $lightness: 7%);
   width: 100%;
-  margin: $small-spacing 0;
+  margin: variables.$small-spacing 0;
 }
 
 .container {
-  padding: $base-spacing;
+  padding: variables.$base-spacing;
   margin-left: auto;
   margin-right: auto;
   max-width: 800px;
@@ -57,28 +62,28 @@ hr {
 .link {
   display: inline-block;
   padding-bottom: .08em;
-  border-bottom: 2px solid $light-gray-color;
+  border-bottom: 2px solid variables.$light-gray-color;
 
-  @include transition(border 300ms linear);
+  @include transition.transition(border 300ms linear);
 
   &:hover,
   &:focus,
   &:active {
-    border-color: darken($light-gray-color, 10%);
+    border-color: color.adjust(variables.$light-gray-color, $lightness: -10%);
   }
 }
 
 .site-header {
-  border-top: 5px solid $light-gray-color;
-  border-bottom: 1px solid lighten($light-gray-color, 5%);
-  margin-bottom: $small-spacing;
+  border-top: 5px solid variables.$light-gray-color;
+  border-bottom: 1px solid color.adjust(variables.$light-gray-color, $lightness: 5%);
+  margin-bottom: variables.$small-spacing;
   min-height: 80px;
 }
 
 .intro {
   .emphasise {
-    background-color: $action-color;
-    color: $white-color;
+    background-color: variables.$action-color;
+    color: variables.$white-color;
     display: inline-block;
     padding: 0 .3em;
   }
@@ -126,14 +131,14 @@ hr {
 }
 
 .post-list {
-  background-color: lighten($light-gray-color, 17%);
-  padding: $base-spacing 0;
+  background-color: color.adjust(variables.$light-gray-color, $lightness: 17%);
+  padding: variables.$base-spacing 0;
 }
 
 .post-item {
-  padding-bottom: $small-spacing;
-  margin-bottom: $base-spacing;
-  border-bottom: 1px solid lighten($light-gray-color, 5%);
+  padding-bottom: variables.$small-spacing;
+  margin-bottom: variables.$base-spacing;
+  border-bottom: 1px solid color.adjust(variables.$light-gray-color, $lightness: 5%);
 
   strong {
     font-weight: 700;
@@ -152,22 +157,22 @@ hr {
 
 .post-meta, .post-item {
   a.tag {
-    color: $medium-gray-color;
-    background: lighten($light-gray-color, 5%);
+    color: variables.$medium-gray-color;
+    background: color.adjust(variables.$light-gray-color, $lightness: 5%);
     border-radius: 5px;
     padding: .05em .75em;
     font-size: .75em;
     text-transform: capitalize;
     transition: .5s all;
     &:hover {
-        background: $light-gray-color;
-        color: darken($medium-gray-color, 5%);
+        background: variables.$light-gray-color;
+        color: color.adjust(variables.$medium-gray-color, $lightness: -5%);
     }
   }
 }
 
 .post-meta {
-  color: $medium-gray-color;
+  color: variables.$medium-gray-color;
   font-style: italic;
 }
 
@@ -181,7 +186,7 @@ hr {
     .tag {
         text-transform: capitalize;
         text-decoration: none;
-        color: $base-font-color;
+        color: variables.$base-font-color;
         border: none;
         &:hover {
             &:after {
@@ -211,7 +216,7 @@ hr {
   }
 
   a, span {
-    font-size: rem(12);
+    font-size: px-to-rem.rem(12);
     padding: .5em;
   }
 
@@ -221,7 +226,7 @@ hr {
 }
 
 .share {
-  padding: $base-spacing 0 0;
+  padding: variables.$base-spacing 0 0;
 
   @extend .pull-right;
 
@@ -231,18 +236,18 @@ hr {
 }
 
 .disqus {
-  background-color: lighten($light-gray-color, 16%);
-  padding: $base-spacing 0;
+  background-color: color.adjust(variables.$light-gray-color, $lightness: 16%);
+  padding: variables.$base-spacing 0;
 
   hr {
-    margin: $base-spacing 0;
+    margin: variables.$base-spacing 0;
   }
 }
 
 .site-footer {
   @extend .clearfix;
 
-  padding: $base-spacing 0;
+  padding: variables.$base-spacing 0;
 
   a {
     @extend .link;
@@ -250,7 +255,7 @@ hr {
 
   small {
     display: block;
-    font-size: rem(12);
-    color: darken($medium-gray-color, 10%);
+    font-size: px-to-rem.rem(12);
+    color: color.adjust(variables.$medium-gray-color, $lightness: -10%);
   }
 }
